@@ -1,19 +1,22 @@
 // Leemos las variables de entorno del fichero ".env".
 import 'dotenv/config';
 
-// Importamos express.
+// Importamos express y morgan.
 import express from 'express';
+import morgan from 'morgan';
 
 // Creamos un servidor con express.
 const app = express();
 
 // Middleware que muestre por consola el método y la ruta (endpoint) de la petición entrante.
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+app.use(morgan('dev'));
 
-    // Pasamos el control al siguiente middleware.
-    next();
-});
+//app.use((req, res, next) => {
+//  console.log(`${req.method} ${req.url}`);
+//
+// Pasamos el control al siguiente middleware.
+//  next();
+//});
 
 // Middleware que me devuelve todos los post de la base de datos.
 app.get('/posts', (req, res) => {
