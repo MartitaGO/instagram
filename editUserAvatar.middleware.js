@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
 
 // Configurar multer para gestionar la subida de archivos.
 const storage = multer.memoryStorage();
@@ -74,25 +73,4 @@ app.post('/unlike', (req, res) => {
             message: 'Error al quitar like',
         });
     }
-});
-
-// Manejo de errores global
-app.use((err, req, res) => {
-    console.error(err.stack);
-    res.status(500).send({
-        status: 'error',
-        message: 'Algo salió mal en el servidor',
-    });
-});
-
-// Middleware de ruta no encontrada.
-app.use((req, res) => {
-    res.status(404).send({
-        status: 'error',
-        message: 'Ruta no encontrada',
-    });
-});
-
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
