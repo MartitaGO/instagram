@@ -59,7 +59,7 @@ const main = async () => {
         `);
 
           // Creamos la tabla de comentarios. (opcional)
-          await pool.query(`
+         /* await pool.query(`
           CREATE TABLE IF NOT EXISTS postComents (
               id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
               comments TINYINT UNSINGNED NOT NULL,
@@ -68,8 +68,8 @@ const main = async () => {
               createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (userId) REFERENCES users(id),
               FOREIGN KEY (entryId) REFERENCES entries(id)
-          )
-      `);
+          ) 
+      `); */
 
         console.log('Tablas creadas');
     } catch (err) {
