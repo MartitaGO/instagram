@@ -39,13 +39,13 @@ app.use((req, res) => {
 });
 
 // Middleware de manejo de errores con 4 parámetros
-app.use(error, req, res, next) => {
+app.use((error, req, res, next) => {
     console.error(err);
     res.status(err.httpStatus || 500).send({
         status: 'error',
         message: err.message,
     });
-};
+});
 
 // Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
