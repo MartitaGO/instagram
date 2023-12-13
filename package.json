@@ -2,7 +2,7 @@
     "type": "module",
     "name": "instagram",
     "version": "1.0.0",
-    "description": "",
+    "description": "Api Clon de instagram",
     "main": "app.js",
     "scripts": {
         "dev": "nodemon app.js"

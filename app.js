@@ -9,6 +9,7 @@ import cors from 'cors';
 
 //Importamos las rutas.
 import routes from './src/routes/routes.js';
+//import postRouter from './routes/posts.routes.js';
 
 // Creamos un servidor con express.
 const app = express();
@@ -27,6 +28,14 @@ app.use(morgan('dev'));
 
 //Middleware que indica a express dónde están las rutas.
 app.use(routes);
+
+// Middleware que me devuelve todas las fotos de la base de datos.
+/*
+app.get('/lookPhotos', (req, res) => {
+    res.send({
+        status: 'ok',
+        message: 'Aquí tienes el listado de fotos'})});
+*/
 
 //Middleware de manejo de errores.
 app.use((err, req, res, next) => {
@@ -48,5 +57,6 @@ app.use((req, res) => {
 
 // Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
+
     console.log(`Servidor escuchando en http://localhost:${process.env.PORT}`);
 });
