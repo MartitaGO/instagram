@@ -1,33 +1,40 @@
 // Leemos las variables de entorno del fichero ".env".
 import 'dotenv/config';
 
-// Importamos express.
+// Importamos dependencias.
 import express from 'express';
+import morgan from 'morgan';
+import fileUpload from 'express-fileupload';
+import cors from 'cors';
+
+//Importamos las rutas.
+import routes from './src/routes/routes.js';
 
 // Creamos un servidor con express.
 const app = express();
 
+app.use(cors());
+
+app.use(express.static(process.env.UPLOADS_DIR));
+
+app.use(fileUpload());
+
+//Middleware que parsea un body en formato JSON.
+app.use(express.json());
+
 // Middleware que muestre por consola el método y la ruta (endpoint) de la petición entrante.
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+app.use(morgan('dev'));
 
-    // Pasamos el control al siguiente middleware.
-    next();
-});
+//Middleware que indica a express dónde están las rutas.
+app.use(routes);
 
-// Middleware que me devuelve todos los post de la base de datos.
-app.get('/posts', (req, res) => {
-    res.send({
-        status: 'ok',
-        message: 'Aquí tienes el listado de posts',
-    });
-});
+//Middleware de manejo de errores.
+app.use((err, req, res, next) => {
+    console.error(err);
 
-// Middleware que crea un post en la base de datos.
-app.post('/posts', (req, res) => {
-    res.status(201).send({
-        status: 'ok',
-        message: 'Post creado',
+    res.status(err.httpStatus || 500).send({
+        status: 'error',
+        message: err.message,
     });
 });
 
