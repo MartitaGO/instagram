@@ -8,18 +8,19 @@ import express from 'express';
 import morgan from 'morgan';
 
 // Importamos rutas
-import postRoutes from '../src/routes/postRoutes.js';
+import routes from '../src/routes/routes.js';
 
 // Creamos un servidor con express.
 const app = express();
 
+// Middleware que parsea un body en formato JSON
 app.use(express.json());
 
 // Middleware que muestra por consola la petición y hace uso del next
 app.use(morgan('dev'));
 
 // Middleware que activa todas las funciones en routes
-app.use(postRoutes);
+app.use(routes);
 
 // Middleware que muestre por consola el método y la ruta (endpoint) de la petición entrante.
 app.use((req, res, next) => {
@@ -44,7 +45,7 @@ app.use(error, req, res, next) => {
         status: 'error',
         message: err.message,
     });
-});
+};
 
 // Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {

@@ -4,5 +4,5 @@ import getPool from '../db/getPool.js';
 		const pool = await getPool(); 
 		const [posts] = await pool.query('SELECT * FROM posts');
 		return posts; 
-
+        }
 		export default selectAllPostModel;
