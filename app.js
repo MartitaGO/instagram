@@ -9,7 +9,6 @@ import cors from 'cors';
 
 //Importamos las rutas.
 import routes from './src/routes/routes.js';
-//import postRouter from './routes/posts.routes.js';
 
 // Creamos un servidor con express.
 const app = express();
@@ -55,8 +54,8 @@ app.use((req, res) => {
     });
 });
 
+
 // Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
-
     console.log(`Servidor escuchando en http://localhost:${process.env.PORT}`);
 });

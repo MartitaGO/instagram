@@ -5,6 +5,11 @@ import express from 'express';
 const router = express.Router();
 
 //Importamos las funciones controladoras finales.
+
+// FIXME
+// Importamos todas las funciones en una sola línea, desde el archivo con todas las funciones
+//import { getUserController, listPostsController } from '../controllers/indexControllers.js'
+
 import newPostController from '../controllers/newPostController.js';
 import listPostsController from '../controllers/listPostsController.js';
 import newUserController from '../controllers/newUserController.js';

@@ -1,23 +1,20 @@
-//Importamos la función que se conecta a la base de datos y me retorna los posts.
-import selectAllPostModel from '../models/selectAllPostModel.js';
+// Importamos modelo que selecciona todas las publicaciones
+import selectAllPostModel from '../models/selectAllPostModel.js'; 
 
-//Función controladora final que retorna el listado de posts.
-const listPostsController = async (req, res, next) => {
-    try {
-        //Obtenemos el listado de posts.
-        const posts = await selectAllPostModel();
+// Creamos función que lista todas las publicaciones
+		const listPostsController = async (req, res, next) => {
+		try {
+			const posts = await selectAllPostModel(); 
+			
+			res.send({
+				status: 'ok',
+				data: {
+					posts,
+			},
+		});
+		} catch (err) {
+			next(err);
+		}
+		};
 
-        //Enviamos una respuesta al cliente.
-        res.send({
-            status: 'ok',
-            data: {
-                posts,
-            },
-        });
-    } catch (err) {
-        next(err);
-    }
-};
-
-//Exportamos la función
 export default listPostsController;
