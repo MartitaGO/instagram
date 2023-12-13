@@ -3,9 +3,11 @@ import 'dotenv/config';
 
 // Importamos express.
 import express from 'express';
+import postRouter from './routes/posts.routes.js';
 
 // Creamos un servidor con express.
 const app = express();
+app.use(postRouter)
 
 // Middleare que muestre por consola el método y la tuta
 app.use((req, res, next) => {

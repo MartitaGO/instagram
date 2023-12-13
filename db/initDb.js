@@ -10,14 +10,14 @@ const main = async () => {
         console.log('Borrando tablas....');
 
         await pool.query(
-            'DROP TABLE IF EXISTS entryLikes, entryPhotos, posts, users'
+            'DROP TABLE IF EXISTS postLikes, posts, users'
         );
 
         console.log('creando tablas...');
             
         // Creamos la tabla de Usuarios.
         await pool.query(`
-            CREATE TABLE IF NOT EXISTS user (
+            CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 username VARCHAR(30) UNIQUE NOT NULL,
@@ -36,38 +36,40 @@ const main = async () => {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS posts (
                 id INT USNGINED PRIMARY KEY AUTO_INCREMENT,
-                title VARCHAR(50) NOT NULL,
-                place VARCHAR(30) NOT NULL,
-                description TEXT NOT NULL,
+                fileName VARCHAR(50) NOT NULL,
+                description TEXT NULL,
                 userId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id)
             )
         `);
 
-     // Creamos la tabla de fotos.
-     await pool.query(`
-     CREATE TABLE IF NOT EXISTS entryPhotos (
-         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-         name VARCHAR(100) NOT NULL,
-         entryId INT UNSIGNED NOT NULL,
-         FOREIGN KEY (entryId) REFERENCES entries(id),
-         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-     )
- `);
 
         // Creamos la tabla de likes.
         await pool.query(`
-            CREATE TABLE IF NOT EXISTS entryLikes (
+            CREATE TABLE IF NOT EXISTS postLikes (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 value TINYINT UNSINGNED NOT NULL,
                 userId INT UNSIGNED NOT NULL,
-                entryId INT UNSINGED NOT NULL,
+                postId INT UNSINGED NOT NULL,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id),
                 FOREIGN KEY (entryId) REFERENCES entries(id)
             )
         `);
+
+          // Creamos la tabla de comentarios. (opcional)
+          await pool.query(`
+          CREATE TABLE IF NOT EXISTS postComents (
+              id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+              comments TINYINT UNSINGNED NOT NULL,
+              userId INT UNSIGNED NOT NULL,
+              postId INT UNSINGED NOT NULL,
+              createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+              FOREIGN KEY (userId) REFERENCES users(id),
+              FOREIGN KEY (entryId) REFERENCES entries(id)
+          )
+      `);
 
         console.log('Tablas creadas');
     } catch (err) {
