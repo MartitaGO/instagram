@@ -17,4 +17,4 @@ import selectAllPostModel from '../models/selectAllPostModel.js';
 		}
 		};
 
-		export default listPostsController;
+export default listPostsController;

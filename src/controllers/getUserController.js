@@ -19,6 +19,5 @@ const getUserController = async (req, res, next) => {
 		}
 		};
 
-		export default getUserController;
-		
-
+//Exportamos la función.
+export default getUserController;

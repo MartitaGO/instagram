@@ -9,7 +9,7 @@ Este ejercicio consiste en crear una API que clone la red social de fotos conoci
     - password
     - createdAt
 
-- Post:
+- Publicación:
     - id
     - user
     - image
