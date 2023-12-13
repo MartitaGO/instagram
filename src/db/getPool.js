@@ -7,7 +7,6 @@ import mysql from 'mysql2/promise';
 // Importamos las variables de entorno necesarias.
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB } = process.env;
 
-console.log(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB);
 // Variable que almacenará un grupo de conexiones.
 let pool;
 

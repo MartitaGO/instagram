@@ -3,9 +3,11 @@ import getPool from './getPool.js';
 
 //Función que genera las tablas de la base de datos.
 const initDb = async () => {
+    let pool;
+
     try {
         // Obtenemos un pool de conexiones.
-        const pool = await getPool();
+        pool = await getPool();
 
         console.log('Borrando tablas...');
 
@@ -46,6 +48,7 @@ const initDb = async () => {
                 place VARCHAR(30) NOT NULL,
                 description TEXT NOT NULL,
                 userId INT UNSIGNED NOT NULL,
+                -- falta nombre foto (  "1325234f34t324fwre_Foto.jpg")
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id)
             )
@@ -54,7 +57,7 @@ const initDb = async () => {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS entryLikes (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-                value TINYINT UNSINGNED NOT NULL,
+                -- value TINYINT UNSINGNED NOT NULL,
                 userId INT UNSIGNED NOT NULL,
                 entryId INT UNSINGED NOT NULL,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
