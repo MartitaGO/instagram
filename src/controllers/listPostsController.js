@@ -1,6 +1,8 @@
+// Importamos modelo que selecciona todas las publicaciones
 import selectAllPostModel from '../models/selectAllPostModel.js'; 
-		
-		const listPostController = async (req, res, next) => {
+
+// Creamos función que lista todas las publicaciones
+		const listPostsController = async (req, res, next) => {
 		try {
 			const posts = await selectAllPostModel(); 
 			

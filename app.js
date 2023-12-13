@@ -4,7 +4,11 @@ import 'dotenv/config';
 // Importamos express.
 import express from 'express';
 
+// Importamos morgan
 import morgan from 'morgan';
+
+// Importamos rutas
+import postRoutes from '../src/routes/postRoutes.js';
 
 // Creamos un servidor con express.
 const app = express();
@@ -14,28 +18,15 @@ app.use(express.json());
 // Middleware que muestra por consola la petición y hace uso del next
 app.use(morgan('dev'));
 
+// Middleware que activa todas las funciones en routes
+app.use(postRoutes);
+
 // Middleware que muestre por consola el método y la ruta (endpoint) de la petición entrante.
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
 
     // Pasamos el control al siguiente middleware.
     next();
-});
-
-// Middleware que me devuelve todos los post de la base de datos.
-app.get('/posts', (req, res) => {
-    res.send({
-        status: 'ok',
-        message: 'Aquí tienes el listado de posts',
-    });
-});
-
-// Middleware que crea un post en la base de datos.
-app.post('/posts', (req, res) => {
-    res.status(201).send({
-        status: 'ok',
-        message: 'Post creado',
-    });
 });
 
 // Middleware de ruta no encontrada.
