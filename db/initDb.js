@@ -1,7 +1,7 @@
 import getPool from "./getPool.js";
 
 const main = async () => {
-
+    // Variable que alamacenará una conexión con la base de datos.
     let pool;
 
     try {
@@ -14,7 +14,8 @@ const main = async () => {
         );
 
         console.log('creando tablas...');
-    
+            
+        // Creamos la tabla de Usuarios.
         await pool.query(`
             CREATE TABLE IF NOT EXISTS user (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -31,6 +32,7 @@ const main = async () => {
             )
         `);
 
+        // Creamos la tabla de Post.
         await pool.query(`
             CREATE TABLE IF NOT EXISTS posts (
                 id INT USNGINED PRIMARY KEY AUTO_INCREMENT,
@@ -43,6 +45,18 @@ const main = async () => {
             )
         `);
 
+     // Creamos la tabla de fotos.
+     await pool.query(`
+     CREATE TABLE IF NOT EXISTS entryPhotos (
+         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+         name VARCHAR(100) NOT NULL,
+         entryId INT UNSIGNED NOT NULL,
+         FOREIGN KEY (entryId) REFERENCES entries(id),
+         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+     )
+ `);
+
+        // Creamos la tabla de likes.
         await pool.query(`
             CREATE TABLE IF NOT EXISTS entryLikes (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -58,9 +72,11 @@ const main = async () => {
         console.log('Tablas creadas');
     } catch (err) {
     console.error(err);
-} finally {
+    } finally {
+        // Cerramos el proceso.
     process.exit();
-}
+    }
 };
 
+// Ejecutamos la función anterior.
 main();

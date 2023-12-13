@@ -13,30 +13,34 @@ const {
 let pool;
 
 const getPool = async () =>{
-    try {  
-    if(!pool){
+    try {   // Inicia TRY
+    if(!pool){ // Verifico que el pool no esté inicializado anteriormente
+
+        // Crear pool temporal para dar de alta la base si es posibe que no existe
        const poolTemp = mysql.createPool ({
-        host: MYSQL_HOST,
-        user: MYSQL_USER,
-        password: MYSQL_PASS,
-       }) 
+            host: MYSQL_HOST, // envío el host para la conexión
+            user: MYSQL_USER, // envío el user
+            password: MYSQL_PASS, // envío la contraseña
+       });
 
        await poolTemp.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DB}`);
 
-       pool = mysql.createPool({
-        host: MYSQL_HOST,
-        user: MYSQL_USER,
-        password: MYSQL_PASS,
-        connectionLimit: 10,
-        database: MYSQL_DB,
-        timezone: 'Z'
-       })
-    }
+       pool = mysql.createPool({ //Comienzo a crear el pool mediante MYSQL y le envío un objeto
+        host: MYSQL_HOST, //envio el host para la conexión
+        user: MYSQL_USER, //envio el user 
+        password: MYSQL_PASS, //envio la contraseña
+        connectionLimit: 10, //determino la cantidad máxima de conexiones (10 por poner 10)
+        database: MYSQL_DB, //determino la base a la cual conectarme
+        timezone: 'Z' //Z para horario UTC (horario global)
+    }) //cierro el createPool
 
-    return pool;
-} catch (error) {
-    console.error(error)
+} //cierro el if donde valido si no está inicializado el pool
+
+return pool; //devuelvo el pool ya creado
+} catch (error) { //catcheo el error, recibo error como variable
+console.error(error) //muestro el error
+} //finaliza el trycatch
 }
-}
+
 
 export default getPool; 
