@@ -2,15 +2,12 @@
 import getPool from '../db/getPool.js';
 
 //Función que se conecta a la base de datos y crea un post.
-const loginController = async (email, password) => {
+const loginController = async (text) => {
     //Obtenemos un pool de conexiones.
     const pool = await getPool();
 
-    //Insertamos el user y password.
-    await pool.query('INSERT INTO user (email, password) VALUES (?, ?)', [
-        email,
-        password,
-    ]);
+    //Insertamos el post.
+    await pool.query('INSERT INTO user (text) VALUES (?)', [text]); //!!!!!!!!!!!!NO LO TENGO CLARO
 };
 
 //Exportamos la función

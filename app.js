@@ -1,23 +1,23 @@
 // Leemos las variables de entorno del fichero ".env".
 import 'dotenv/config';
 
-// Importamos dependencias.
+// Importamos express y morgan.
 import express from 'express';
 import morgan from 'morgan';
-import fileUpload from 'express-fileupload';
-import cors from 'cors';
 
 //Importamos las rutas.
-import routes from './src/routes/routes.js';
+import postRoutes from './src/routes/postRoutes.js';
 
 // Creamos un servidor con express.
 const app = express();
 
-app.use(cors());
+// Middleare que muestre por consola el método y la tuta
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
 
-app.use(express.static(process.env.UPLOADS_DIR));
-
-app.use(fileUpload());
+    // Pasamos el control al siguiente Middleware
+    next();
+});
 
 //Middleware que parsea un body en formato JSON.
 app.use(express.json());
@@ -25,26 +25,60 @@ app.use(express.json());
 // Middleware que muestre por consola el método y la ruta (endpoint) de la petición entrante.
 app.use(morgan('dev'));
 
-//Middleware que indica a express dónde están las rutas.
-app.use(routes);
+//Esta función queda sustituida por la anterior de morgan.
+//app.use((req, res, next) => {
+//  console.log(`${req.method} ${req.url}`);
+//
+// Pasamos el control al siguiente middleware.
+//  next();
+//});
 
-// Middleware que me devuelve todas las fotos de la base de datos.
-/*
-app.get('/lookPhotos', (req, res) => {
+//Middleware que indica a express dónde están las rutas.
+app.use(postRoutes);
+
+//Los dos middleware siguientes son sustituidos por el middleware de arriba que indica a express dónde están las rutas.
+// Middleware que me devuelve todos los post de la base de datos.
+//app.get('/posts', (req, res) => {
+//  res.send({
+//    status: 'ok',
+//  message: 'Aquí tienes el listado de posts',
+//});
+//});
+
+// Middleware que crea un post en la base de datos.
+app.post('/photo', (req, res) => {
+    req.files.foto;
     res.send({
         status: 'ok',
-        message: 'Aquí tienes el listado de fotos'})});
-*/
-
-//Middleware de manejo de errores.
-app.use((err, req, res, next) => {
-    console.error(err);
-
-    res.status(err.httpStatus || 500).send({
-        status: 'error',
-        message: err.message,
+        message: 'Foto subida',
     });
 });
+
+// Middleware para dar like
+app.post('/like', (req, res) => {
+    res.send({
+        status: 'ok',
+        message: 'Has dado like',
+    });
+});
+
+//Middleware para dar unlike
+app.post('/unlike', (req, res) => {
+    res.send({
+        status: 'ok',
+        message: 'Has hecho unlike',
+    });
+});
+
+//Middleware de manejo de errores.
+//app.use((err, req, res) => {
+//console.error(err);
+
+// res.status(err.httpStatus || 500).send({
+// status: 'error',
+//  message: err.message,
+//});
+//});
 
 // Middleware de ruta no encontrada.
 app.use((req, res) => {
@@ -53,7 +87,6 @@ app.use((req, res) => {
         message: 'Ruta no encontrada',
     });
 });
-
 
 // Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
