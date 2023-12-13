@@ -47,11 +47,13 @@ app.use(postRoutes);
 
 // Middleware que crea un post en la base de datos.
 app.post('/photo', (req, res) => {
+    req.files.foto;
     res.send({
         status: 'ok',
         message: 'Foto subida',
     });
 });
+
 
 // Middleware para dar like
 app.post('/like', (req, res) => {
