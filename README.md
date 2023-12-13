@@ -1,6 +1,6 @@
 # Clon de Instagram
 
-Este ejercicio consiste en crear una API que clone la red social de fotos conocida como Instagram. 
+Este proyecto consiste en crear una API que clone la red social de fotos conocida como Instagram. 
 
 ## Entidades 
 - User: 
