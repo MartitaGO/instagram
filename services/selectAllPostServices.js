@@ -2,7 +2,7 @@
 import getPool from '../db/getPool.js';
 
 //Función que se conecta a la base de datos y crea un post.
-const selectAllPostModel = async () => {
+const selectAllPostService = async () => {
     //Obtenemos un pool de conexiones.
     const pool = await getPool();
 
@@ -14,4 +14,4 @@ const selectAllPostModel = async () => {
 };
 
 //Exportamos la función
-export default selectAllPostModel;
+export default selectAllPostService;
