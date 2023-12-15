@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 import errors from '../helpers/errorsHelper.js';
 
 //Función que se conecta a la base de datos y crea un user.
-const newUserModel = async (username, password, email, registrationCode) => {
+const newUserServices = async (username, password, email) => {
     const pool = await getPool();
 
     let [users] = await pool.query(
@@ -21,11 +21,11 @@ const newUserModel = async (username, password, email, registrationCode) => {
 
     try {
         const sqlQuery =
-            'INSERT INTO users (username, password, email, registrationCode) VALUES (?, ?, ?, ?)';
+            'INSERT INTO users (username, password, email) VALUES (?, ?, ?)';
 
         const hashPassword = await bcrypt.hash(password, 5);
 
-        const values = [username, hashPassword, email, registrationCode];
+        const values = [username, hashPassword, email];
         const [response] = await pool.query(sqlQuery, values);
         return response;
     } catch (err) {
@@ -37,4 +37,4 @@ const newUserModel = async (username, password, email, registrationCode) => {
 };
 
 //Exportamos la función
-export default newUserModel;
+export default newUserServices;

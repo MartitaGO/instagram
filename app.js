@@ -8,7 +8,7 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
 //Importamos las rutas.
-import routes from './src/routes/routes.js';
+import routes from './routes/routes.js';
 
 // Creamos un servidor con express.
 const app = express();

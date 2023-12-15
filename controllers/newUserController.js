@@ -1,12 +1,12 @@
 //Importamos la función que se conecta a la base de datos para crear un post.
-import newUserModel from '../models/newUserModel.js';
+import newUserServices from '../services/newUserServices.js';
 import errors from '../helpers/errors.helper.js';
 
 //Función controladora final que crea un user.
 const newUserController = async (body) => {
     //Obtenemos los datos necesarios para crear el user.
     const { email, username, password } = body;
-    const response = await newUserModel.newUserController(
+    const response = await newUserServices.newUserController(
         email,
         username,
         password,
