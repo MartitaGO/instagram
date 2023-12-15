@@ -1,16 +1,36 @@
-import loginServices from '../services/loginServices.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import errors from '../helpers/errors.helper.js';
+import loginServices from '../services/loginServices.js';
 
-const loginController = async (req, res, next) => {
-    try {
-        res.send({
-            status: 'error',
-            message: 'Not implemented',
-        });
-    } catch (err) {
-        next(err);
+const loginControlller = async (email, password) => {
+    const user = await loginServices.getUserByEmail(email);
+
+    const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+        errors.notAuthorizedError(
+            'Credenciales inválidas',
+            'INVALID_CREDENTIALS',
+        );
     }
+
+    if (!user.active) {
+        errors.userPendingActivation(
+            'Usuario pendiente de activar. Verifique su correo electrónico para validar su cuenta.',
+        );
+    }
+
+    const tokenInfo = {
+        id: user.id,
+        role: user.role,
+    };
+
+    const token = jwt.sign(tokenInfo, process.env.SECRET, {
+        expiresIn: process.env.EXPIRE,
+    });
+
+    return token;
 };
 
-//Exportamos la función.
-export default loginController;
+export default loginControlller;
