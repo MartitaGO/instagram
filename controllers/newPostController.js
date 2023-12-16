@@ -1,5 +1,5 @@
 //Importamos la función que se conecta a la base de datos para crear un post.
-import insertPostModel from '../models/insertPostModel.js';
+import insertPostServices from '../services/insertPostServices.js';
 
 //Función controladora final que crea un post.
 const newPostController = async (req, res, next) => {
@@ -15,7 +15,7 @@ const newPostController = async (req, res, next) => {
         }
 
         //Creamos el post.
-        await insertPostModel(text);
+        await insertPostServices(text);
 
         //Enviamos una respuesta al cliente
         res.status(201).send({

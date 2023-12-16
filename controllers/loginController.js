@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import errors from '../helpers/errors.helper.js';
+import errors from '../helpers/errorsHelper.js';
 import loginServices from '../services/loginServices.js';
 
 const loginControlller = async (email, password) => {

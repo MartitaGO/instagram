@@ -1,6 +1,6 @@
 //Importamos la función que se conecta a la base de datos para crear un post.
 import newUserServices from '../services/newUserServices.js';
-import errors from '../helpers/errors.helper.js';
+import errors from '../helpers/errorsHelper.js';
 
 //Función controladora final que crea un user.
 const newUserController = async (body) => {

@@ -2,7 +2,7 @@
 import getPool from '../db/getPool.js';
 
 //Función que se conecta a la base de datos y crea un post.
-const insertPostModel = async (text) => {
+const insertPostServices = async (text) => {
     //Obtenemos un pool de conexiones.
     const pool = await getPool();
 
@@ -11,4 +11,4 @@ const insertPostModel = async (text) => {
 };
 
 //Exportamos la función
-export default insertPostModel;
+export default insertPostServices;
