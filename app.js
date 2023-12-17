@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.static(process.env.UPLOADS_DIR));
+//app.use(express.static(process.env.UPLOADS_DIR));
 
 app.use(fileUpload());
 

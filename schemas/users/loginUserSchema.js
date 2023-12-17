@@ -1,5 +1,5 @@
 import joi from 'joi';
-import joiMsg from '../joi.error.messages.js';
+import joiMsg from '../joiError.js';
 
 const loginUserSchema = joi.object({
     password: joi

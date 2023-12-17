@@ -6,11 +6,7 @@ import errors from '../helpers/errorsHelper.js';
 const newUserController = async (body) => {
     //Obtenemos los datos necesarios para crear el user.
     const { email, username, password } = body;
-    const response = await newUserServices.newUserController(
-        email,
-        username,
-        password,
-    );
+    const response = await newUserServices(email, username, password);
 
     if (response.affectedRows !== 1) {
         errors.conflictError(
@@ -22,7 +18,7 @@ const newUserController = async (body) => {
     //Enviamos una respuesta al cliente
     response.status(201).send({
         status: 'ok',
-        message: 'User creado',
+        message: 'Usuario creado',
     });
 };
 

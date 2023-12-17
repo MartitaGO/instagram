@@ -4,7 +4,7 @@ import errors from '../helpers/errorsHelper.js';
 import loginServices from '../services/loginServices.js';
 
 const loginControlller = async (email, password) => {
-    const user = await loginServices.getUserByEmail(email);
+    const user = await loginServices(email);
 
     const validPassword = await bcrypt.compare(password, user.password);
 
@@ -12,12 +12,6 @@ const loginControlller = async (email, password) => {
         errors.notAuthorizedError(
             'Credenciales inválidas',
             'INVALID_CREDENTIALS',
-        );
-    }
-
-    if (!user.active) {
-        errors.userPendingActivation(
-            'Usuario pendiente de activar. Verifique su correo electrónico para validar su cuenta.',
         );
     }
 
