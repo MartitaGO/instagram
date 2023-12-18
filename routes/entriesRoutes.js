@@ -55,6 +55,4 @@ router.get(
     lookPhoto
   )
 
-
-
 export default router
