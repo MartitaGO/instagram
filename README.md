@@ -5,11 +5,11 @@ Este proyecto consiste en la creación de una API que replica algunas funcionali
 Tras compartir feedback del anterior proyecto, experiencias personales y comentarios del profesor, los alumnos del curso JSB28RT en Hack A Boss: Marta García, Daniela Espinosa, Gonzalo Bonilla y Julen Ortega han sido capaces de llevar a cabo una colaboración bastante mejor organizada. 
 
 #### Repartición de tareas
-Marta García > Funciones de login y registro, Creación de usuarios y posts con postman
-Daniela Espinosa > Creación de tablas en mysql, Función de búsqueda de fotos por su texto descriptivo, Creación de usuarios y posts con postman
-Gonzalo Bonilla > Funciones de hacer una publicación de una foto con descripción y dar like, Creación de usuarios y posts con postman
-Julen Ortega > README, Comentarios descriptivos en cada archivo, Funciones de ver las fotos publicadas por otros usuarios y perfil de un usuario con su galería de fotos
-Todos > Revisión y corrección de errores a medida que se iba creando y probando la API
+- Marta García > Funciones de login y registro, Creación de usuarios y posts con postman
+- Daniela Espinosa > Creación de tablas en mysql, Función de búsqueda de fotos por su texto descriptivo, Creación de usuarios y posts con postman
+- Gonzalo Bonilla > Funciones de hacer una publicación de una foto con descripción y dar like, Creación de usuarios y posts con postman
+- Julen Ortega > README, Comentarios descriptivos en cada archivo, Funciones de ver las fotos publicadas por otros usuarios y perfil de un usuario con su galería de fotos
+- Todos > Revisión y corrección de errores a medida que se iba creando y probando la API
 
 ## ENTIDADES
 ### Usuarios (Users)
@@ -39,22 +39,22 @@ Todos > Revisión y corrección de errores a medida que se iba creando y proband
 
 ## ENDPOINTS DISPONIBLES
 ### Usuarios
-**POST /users/register:** Registro de nuevos usuarios.
-**GET /users/validate/:registrationCode:** Validación de usuarios mediante código de registro.
-**POST /users/login:** Inicio de sesión de usuarios.
-**GET /users: Obtener** información del usuario autenticado.
-**GET /users/:userId:** Obtener información del perfil de un usuario.
-**PUT /users/avatar:** Actualizar avatar de usuario.
-**POST /users/password/recover:** Iniciar proceso de recuperación de contraseña.
-**PUT /users/password:** Cambiar la contraseña de un usuario.
+- **POST /users/register:** Registro de nuevos usuarios.
+- **GET /users/validate/:registrationCode:** Validación de usuarios mediante código de registro.
+- **POST /users/login:** Inicio de sesión de usuarios.
+- **GET /users: Obtener** información del usuario autenticado.
+- **GET /users/:userId:** Obtener información del perfil de un usuario.
+- **PUT /users/avatar:** Actualizar avatar de usuario.
+- **POST /users/password/recover:** Iniciar proceso de recuperación de contraseña.
+- **PUT /users/password:** Cambiar la contraseña de un usuario.
 
 ### Publicaciones
-**POST /posts:** Crear una nueva publicación.
-**POST /posts/:entryId/photos:** Agregar foto a una publicación.
-**DELETE /posts/:entryId/photos/:photoId:** Eliminar una foto de una publicación.
-**POST /posts/:postsId/like:** Dar like a una publicación.
-**GET /posts/:postId/photos:** Obtener listado de fotos de una publicación.
-**GET /posts:** Obtener listado de todas las publicaciones.
+- **POST /posts:** Crear una nueva publicación.
+- **POST /posts/:entryId/photos:** Agregar foto a una publicación.
+- **DELETE /posts/:entryId/photos/:photoId:** Eliminar una foto de una publicación.
+- **POST /posts/:postsId/like:** Dar like a una publicación.
+- **GET /posts/:postId/photos:** Obtener listado de fotos de una publicación.
+- **GET /posts:** Obtener listado de todas las publicaciones.
 
 ## MIDDLEWARES y HELPERS
 Se han implementado middlewares para validar la autenticación, la existencia de usuarios, la autorización para editar, entre otros. Además, se han creado esquemas de validación utilizando Joi para garantizar la integridad de los datos.
