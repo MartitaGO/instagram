@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "2e405ddf-d444-49ef-b113-778bd99aae6b",
+		"name": "Instagram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31390584",
+		"_collection_link": "https://proyecto2-insta.postman.co/workspace/My-Workspace~fd252d03-4c9e-46bd-8ea0-949fde3bf417/collection/31390584-2e405ddf-d444-49ef-b113-778bd99aae6b?action=share&source=collection_link&creator=31390584"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "UsersRegister",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "UsersLogin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"disableCookies": true,
+						"tlsPreferServerCiphers": true,
+						"strictSSL": true,
+						"followOriginalHttpMethod": true,
+						"followAuthorizationHeader": true,
+						"removeRefererHeaderOnRedirect": true,
+						"insecureHTTPParser": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "UsersList",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"disableCookies": true,
+						"tlsPreferServerCiphers": true,
+						"strictSSL": true,
+						"followOriginalHttpMethod": true,
+						"followAuthorizationHeader": true,
+						"removeRefererHeaderOnRedirect": true,
+						"insecureHTTPParser": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "ListPostsSearch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts?search=Italia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Italia"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListPosts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Extra",
+			"item": [
+				{
+					"name": "NotFound",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/prueba"
+					},
+					"response": []
+				},
+				{
+					"name": "StaticImg",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/jfvbhslfdjbgshdfjbghjsdf.jpg"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
