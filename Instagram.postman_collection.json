@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "2e405ddf-d444-49ef-b113-778bd99aae6b",
 		"name": "Instagram",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31390584",
 		"_collection_link": "https://proyecto2-insta.postman.co/workspace/My-Workspace~fd252d03-4c9e-46bd-8ea0-949fde3bf417/collection/31390584-2e405ddf-d444-49ef-b113-778bd99aae6b?action=share&source=collection_link&creator=31390584"
 	},
@@ -24,14 +24,28 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/register"
+						"url": {
+							"raw": "http://localhost:3000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UsersRegister",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -42,7 +56,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/register"
+						"url": {
+							"raw": "http://localhost:3000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
@@ -81,7 +106,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/login"
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -121,7 +157,26 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/login"
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validation",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				},
@@ -132,14 +187,25 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"raw": "{\n    \"password\": \"Nubes.8899\",\n    \"email\": \"zalo1490@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/login"
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -150,19 +216,46 @@
 			"item": [
 				{
 					"name": "Like",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
-						"header": [],
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Guachiman\",\r\n    \"password\": \"Nubes.124\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3000/users/register"
+						"url": {
+							"raw": "http://localhost:3000/posts/postsId/like?search=20230910_172145000_iOS.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"postsId",
+								"like"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "20230910_172145000_iOS.jpg"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -210,17 +303,116 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3000/posts"
+						"url": {
+							"raw": "http://localhost:3000/posts/listPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"listPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UsersAvatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNjk3ODUsImV4cCI6MTcwMzE4MDU4NX0.nnCmD4w4p0mR4VjC4yfzYlfviA-1DyfKwLtSw8_P1_U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "postman-cloud:///1ee9ff95-e3cf-43b0-a647-f4a8d0c2201c"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/avatar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPosts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1ee9e845-66fc-4020-bbe8-6088512cf948"
+								},
+								{
+									"key": "userId",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							]
+						}
 					},
 					"response": []
 				}
@@ -246,7 +438,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/prueba"
+						"url": {
+							"raw": "http://localhost:3000/prueba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"prueba"
+							]
+						}
 					},
 					"response": []
 				},
@@ -267,7 +469,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/jfvbhslfdjbgshdfjbghjsdf.jpg"
+						"url": {
+							"raw": "http://localhost:3000/jfvbhslfdjbgshdfjbghjsdf.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jfvbhslfdjbgshdfjbghjsdf.jpg"
+							]
+						}
 					},
 					"response": []
 				}
