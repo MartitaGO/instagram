@@ -55,13 +55,5 @@ router.get(
 // Ruta para obtener el listado general de publicaciones.
 router.get('/posts', listPosts);
 
-// Ruta temporal para recibir una solicitud POST para la subida de fotos (solo devuelve una respuesta de éxito).
-router.post('/posts', (req, res) => {
-    res.send({
-        status: 'ok',
-        message: 'Foto subida',
-    });
-});
-
 // Exportación del router para su uso en otras partes de la aplicación.
 export default router;

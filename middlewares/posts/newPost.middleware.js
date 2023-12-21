@@ -11,34 +11,17 @@ import { insertNewPost } from '../../controllers/posts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Valida la estructura del cuerpo de la solicitud (req.body) según el esquema newPostsSchema.
-        await validateSchema(newPostsSchema, req.body);
+        //await validateSchema(newPostsSchema, req.body);
 
         // Extrae las propiedades necesarias del cuerpo de la solicitud.
-        const { description, photo, createdAt } = req.body; 
+        const { description } = req.body;
 
-        // Llama a la función insertNewPosts del controlador, proporcionando los datos de la nueva entrada y el ID del usuario actual.
-        const response = await insertNewPost(
-            description,
-            photo,
-            createdAt,
-            req.user.id
-        );
+        const { photo } = req.files;
 
-        // Responde con un mensaje JSON indicando el éxito de la operación y proporcionando información sobre la nueva entrada creada.
-        res.send({
-            status: 'OK',
-            message: 'Entrada generada con éxito.',
-            data: {
-                entry: {
-                    id: response.insertId,  
-    
-                    description,
-                    photo,
-                    userId: req.user.id,
-                    createdAt: new Date(),
-                },
-            },
-        });
+        console.log(photo);
+
+        res.send('Post subido con exito');
+        return 'Exitoso';
     } catch (err) {
         // En caso de error, pasa el control al siguiente middleware (o manejador de errores).
         next(err);

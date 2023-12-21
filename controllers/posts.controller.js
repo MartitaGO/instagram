@@ -6,12 +6,11 @@ import postsServices from '../services/posts.services.js';
 import errors from '../helpers/errors.helper.js';
 
 // Función para insertar un nuevo post
-export const insertNewPost = async (photo, description, createdAt, userId) => {
+export const insertNewPost = async (description, photo, userId) => {
     // Llama al servicio para insertar un nuevo post con los parámetros proporcionados
     const response = await postsServices.insertNewPost(
         photo,
         description,
-        createdAt,
         userId
     );
 
