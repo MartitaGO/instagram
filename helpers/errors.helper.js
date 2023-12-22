@@ -59,8 +59,8 @@ const unauthorizedUser = (msg = 'El usuario no está autorizado') =>{
 }
 
 // Función de error de entidad no encontrada, se utiliza cuando una entidad específica no se encuentra.
-const entityNotFound = (entity = 'Entidad') =>{
-    notFoundError(entity + " no encontrado/a.", 'ENTITY_NOT_FOUND')
+const entityNotFound = (user = 'Entidad') =>{
+    notFoundError(user + " no encontrado/a.", 'ENTITY_NOT_FOUND')
 }
 
 // Función de error de no autenticado, se utiliza cuando se requiere autenticación pero no se proporciona un token.

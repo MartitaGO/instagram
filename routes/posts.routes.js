@@ -21,14 +21,7 @@ const router = express.Router();
 router.post('/posts', authUser, userExists, newPost);
 
 // Ruta para agregar una foto a una publicación existente.
-router.post(
-    '/posts/:entryId/photos',
-    authUser,
-    userExists,
-    postExists,
-    canEdit,
-    addPhoto
-);
+router.post('/posts/:entryId/photos',authUser, userExists, postExists, canEdit, addPhoto);
 
 // Ruta para eliminar una foto de una publicación.
 router.delete(
