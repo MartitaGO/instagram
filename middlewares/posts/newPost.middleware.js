@@ -46,3 +46,4 @@ const main = async (req, res, next) => {
 };
 // Exporta la función main para que pueda ser utilizada en otros archivos.
 export default main;
+
