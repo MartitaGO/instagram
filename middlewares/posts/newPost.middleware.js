@@ -11,7 +11,8 @@ import { insertNewPost } from '../../controllers/posts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Valida la estructura del cuerpo de la solicitud (req.body) según el esquema newPostsSchema.
-        await validateSchema(newPostsSchema, req.body);
+       // await validateSchema(newPostsSchema, req.body);
+        await validateSchema(newPostsSchema, req.files || {});
 
         // Extrae las propiedades necesarias del cuerpo de la solicitud.
         const { description, photo } = req.body; 

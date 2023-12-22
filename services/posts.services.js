@@ -5,12 +5,12 @@ import getPool from '../db/getPool.js';
 import errors from '../helpers/errors.helper.js';
 
 // Función asincrónica para insertar una nueva entrada en la base de datos.
-const insertNewPost = async (photoObject, description, userId) => {
+const insertNewPost = async (photo, description, userId) => {
     const pool = await getPool();
 
     const [response] = await pool.query(
-        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)',
-        [description, JSON.stringify(photoObject), userId]
+        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)'
+        [description, JSON.stringify(photo), userId]
     );
 
     // Verificamos si la inserción fue exitosa.

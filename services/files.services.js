@@ -49,7 +49,7 @@ const savePhoto = async (img, ancho) => {
         const sharpImg = sharp(img.data);
         sharpImg.resize(ancho);
 
-        const imgNameRandom = randomstring.generate(20) + '.jpg';
+        const imgNameRandom = randomstring.generate(20) + '.jpeg';
         const imgPath = path.join(uploadsDir, imgNameRandom);
 
         // Guardado efectivo de la imagen.
