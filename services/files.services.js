@@ -10,7 +10,7 @@ const deletePhoto = async (imgName) => {
         // Construcción de la ruta completa de la imagen.
         const imgPath = path.join(
             process.cwd(),
-            '..',
+            '.',
             process.env.UPLOADS_DIR,
             imgName
         );

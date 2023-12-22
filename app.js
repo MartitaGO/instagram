@@ -5,7 +5,7 @@ dotenv.config();
 // Importación de módulos y configuración de Express
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import cors from 'cors'; 
+import cors from 'cors';
 import routes from './routes/index.routes.js';
 import errorController from './controllers/errors.controller.js';
 
@@ -29,6 +29,7 @@ app.use(routes);
 
 // Middleware para manejar solicitudes a rutas no encontradas
 app.use((req, res) => {
+    console.log(`${req.method} ${req.url}`);
     res.status(404).send({
         status: 'error',
         message: 'Recurso no encontrado',
