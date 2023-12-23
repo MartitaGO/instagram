@@ -9,14 +9,28 @@ import errors from '../helpers/errors.helper.js';
 export const insertNewPost = async (description, photo, userId) => {
     // Llama al servicio para insertar un nuevo post con los parámetros proporcionados
     const response = await postsServices.insertNewPost(
-        photo,
         description,
+        photo,
         userId
     );
 
     // Retorna la respuesta del servicio
     return response;
 };
+
+/*
+FUNCIÓN DE PRUEBA 
+export const insertNewPost = async (description, photo, userId) => {
+const post = {
+    description,
+    photo: photo.filename,
+    userId,
+    createdAt: new Date(),
+};
+
+const response = await postsServices.insertNewPost(post);
+};
+*/
 
 // Función para obtener un post por su ID
 export const getPostsById = async (postsId) => {
@@ -57,6 +71,9 @@ export const deletePhoto = async (postsId) => {
 
     // Elimina la foto del post usando el servicio de posts
     await postsServices.deletePhotoById(postsId);
+
+    await filesServices.updatePhoto(postsId, postsName); // AGREGO ESTA LINEA DE USERCONTROLLER
+
 };
 
 // Función para listar un post por su ID

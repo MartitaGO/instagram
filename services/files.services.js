@@ -10,7 +10,7 @@ const deletePhoto = async (imgName) => {
         // Construcción de la ruta completa de la imagen.
         const imgPath = path.join(
             process.cwd(),
-            '.',
+            '..',
             process.env.UPLOADS_DIR,
             imgName
         );
@@ -50,7 +50,7 @@ const savePhoto = async (img, ancho) => {
         const sharpImg = sharp(img.path);
         sharpImg.resize(ancho);
 
-        const imgNameRandom = randomstring.generate(20) + '.jpg';
+        const imgNameRandom = randomstring.generate(20) + '.jpeg';
         const imgPath = path.join(uploadsDir, imgNameRandom);
 
         // Guardado efectivo de la imagen.
