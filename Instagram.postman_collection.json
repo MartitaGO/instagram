@@ -40,7 +40,7 @@
 					"response": []
 				},
 				{
-					"name": "UsersRegister",
+					"name": "UsersSearch",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -72,56 +72,6 @@
 					"response": []
 				},
 				{
-					"name": "UsersLogin",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"connection": true,
-							"accept-encoding": true
-						},
-						"disableCookies": true,
-						"tlsPreferServerCiphers": true,
-						"strictSSL": true,
-						"followOriginalHttpMethod": true,
-						"followAuthorizationHeader": true,
-						"removeRefererHeaderOnRedirect": true,
-						"insecureHTTPParser": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "UsersList",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true,
@@ -143,30 +93,23 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
+								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/login",
+							"raw": "http://localhost:3000/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"users",
-								"login"
+								"users"
 							]
 						}
 					},
@@ -342,7 +285,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNjk3ODUsImV4cCI6MTcwMzE4MDU4NX0.nnCmD4w4p0mR4VjC4yfzYlfviA-1DyfKwLtSw8_P1_U",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMyNzAwMTQsImV4cCI6MTcwMzI4MDgxNH0.2xaVUmq-ZJIqd7SC9I6JizWpiOYL3jvygtWAaItVLD4",
 								"type": "text"
 							}
 						],
@@ -352,7 +295,7 @@
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": "postman-cloud:///1ee9ff95-e3cf-43b0-a647-f4a8d0c2201c"
+									"src": []
 								}
 							]
 						},
@@ -378,7 +321,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzI2NDg1NywiZXhwIjoxNzAzMjc1NjU3fQ.-D3NRLcidkRhjLORoe0hP6w39X-kWHIXcXgIN9dbUlw",
 								"type": "text"
 							}
 						],
@@ -386,19 +329,19 @@
 							"mode": "formdata",
 							"formdata": [
 								{
+									"key": "createdAt",
+									"value": "2023-12-19 16:42:33",
+									"type": "text"
+								},
+								{
 									"key": "description",
-									"value": "",
+									"value": "Una tarde de primavera en Paris",
 									"type": "text"
 								},
 								{
 									"key": "photo",
 									"type": "file",
-									"src": "postman-cloud:///1ee9e845-66fc-4020-bbe8-6088512cf948"
-								},
-								{
-									"key": "userId",
-									"value": "20",
-									"type": "text"
+									"src": []
 								}
 							]
 						},
