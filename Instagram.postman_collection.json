@@ -40,7 +40,69 @@
 					"response": []
 				},
 				{
-					"name": "UsersSearch",
+					"name": "Validation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Daniela\",\n    \"password\": \"Nubes.12\",\n    \"email\": \"danielaespinosa449@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/validate/5R1sdyO4282pFZTFlP5MMKL8QjDhYb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"validate",
+								"5R1sdyO4282pFZTFlP5MMKL8QjDhYb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Nubes.8899\",\n    \"email\": \"zalo1490@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -114,31 +176,35 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
 				{
-					"name": "Validation",
+					"name": "UsersAvatar",
 					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"password\": \"Nubes.8899\",\n    \"email\": \"zalo1490@gmail.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1NzA0MywiZXhwIjoxNzAzMzY3ODQzfQ.KpNxuA8GpLhVEZVDJ3U2cf_hMLk6QBRJFFQoJZaRwus",
+								"type": "text"
 							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "postman-cloud:///1eea0f6e-ca04-4730-9422-c277fc4d5544"
+								}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/login",
+							"raw": "http://localhost:3000/users/avatar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -146,17 +212,58 @@
 							"port": "3000",
 							"path": [
 								"users",
-								"login"
+								"avatar"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Posts",
-			"item": [
+				},
+				{
+					"name": "AddPosts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1NzA0MywiZXhwIjoxNzAzMzY3ODQzfQ.KpNxuA8GpLhVEZVDJ3U2cf_hMLk6QBRJFFQoJZaRwus",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "Chica superpoderosa",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"contentType": "",
+									"type": "file",
+									"src": "/C:/Users/User/Desktop/bellota.jpeg"
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Like",
 					"protocolProfileBehavior": {
@@ -273,87 +380,6 @@
 							"path": [
 								"posts",
 								"listPosts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UsersAvatar",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMyNzAwMTQsImV4cCI6MTcwMzI4MDgxNH0.2xaVUmq-ZJIqd7SC9I6JizWpiOYL3jvygtWAaItVLD4",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "avatar",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/avatar",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"avatar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AddPosts",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzI2NDg1NywiZXhwIjoxNzAzMjc1NjU3fQ.-D3NRLcidkRhjLORoe0hP6w39X-kWHIXcXgIN9dbUlw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "createdAt",
-									"value": "2023-12-19 16:42:33",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Una tarde de primavera en Paris",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"posts"
 							]
 						}
 					},
