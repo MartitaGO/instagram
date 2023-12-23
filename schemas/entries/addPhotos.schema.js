@@ -5,10 +5,13 @@ import joi from 'joi';
 import imgSchema from '../imgSchema.js';
 
 // Definición del esquema de validación para la adición de fotos.
-const addPhotosSchema = joi.object({
-    // Se especifica que se espera un campo llamado "photo" en la solicitud.
-    photo: imgSchema.required(),
-});
+const addPhotosSchema = joi
+    .object({
+        // Se especifica que se espera un campo llamado "photo" en la solicitud.
+        photo: imgSchema.required(),
+        description: joi.string().required(),
+    })
+    .unknown(true);
 
 // Exportación del esquema para su uso en otras partes de la aplicación.
 export default addPhotosSchema;

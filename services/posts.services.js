@@ -5,12 +5,16 @@ import getPool from '../db/getPool.js';
 import errors from '../helpers/errors.helper.js';
 
 // Función asincrónica para insertar una nueva entrada en la base de datos.
-const insertNewPost = async (photoObject, description, userId) => {
+const insertNewPost = async (photo, description, userId) => {
     const pool = await getPool();
 
+    if (!description) {
+        description = 'Sin descripción disponible'; // Puedes ajustar este valor predeterminado según tus necesidades
+    }
+
     const [response] = await pool.query(
-        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)',
-        [description, JSON.stringify(photoObject), userId]
+        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?)',
+        [description, JSON.stringify(photo), userId]
     );
 
     // Verificamos si la inserción fue exitosa.
@@ -63,7 +67,7 @@ const getPhotoById = async (postsId) => {
 
     // Verificamos si la foto existe.
     if (response.length < 1) {
-        errors.entityNotFound('Photo');
+        errors.entityNotFound('photo');
     }
 
     return response[0];
@@ -78,7 +82,7 @@ const deletePhotoById = async (postsId) => {
 
     // Verificamos si la eliminación fue exitosa.
     if (response.affectedRows < 1) {
-        errors.entityNotFound('Photo');
+        errors.entityNotFound('photo');
     }
 
     return response;
@@ -88,10 +92,9 @@ const deletePhotoById = async (postsId) => {
 const listPosts = async (search) => {
     const pool = await getPool();
     const [response] = await pool.query(
-        ('WHERE desciption LIKE (' % search) % ') ',
-        [search]
+        'SELECT * FROM posts WHERE description LIKE ?',
+        [`%${search}%`]
     );
-
     // Verificamos si hay errores al buscar las entradas.
     if (response.length > 0) {
         errors.conflictError('Error al buscar el posts');

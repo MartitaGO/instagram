@@ -22,7 +22,7 @@ const main = async (req, res, next) => {
             data: {
                 posts,
             },
-        });
+        }).unknown(true);
     } catch (err) {
         // En caso de error, pasa el control al siguiente middleware (o manejador de errores).
         next(err);

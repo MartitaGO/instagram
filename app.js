@@ -18,7 +18,7 @@ app.use(fileUpload()); // Middleware para el manejo de archivos en las solicitud
 
 // Middleware para mostrar por consola el método y la ruta de cada solicitud
 app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+    console.log(`${req.method} ${res.url}`);
 
     // Pasamos el control al siguiente Middleware
     next();
@@ -29,7 +29,6 @@ app.use(routes);
 
 // Middleware para manejar solicitudes a rutas no encontradas
 app.use((req, res) => {
-    console.log(`${req.method} ${req.url}`);
     res.status(404).send({
         status: 'error',
         message: 'Recurso no encontrado',

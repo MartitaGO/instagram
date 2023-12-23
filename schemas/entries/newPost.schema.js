@@ -21,7 +21,7 @@ const newPostSchema = joi.object({
                 .valid('image/jpeg', 'image/png')
                 .required(),
         })
-        .required()
+        .unknown(true)
         .messages(joiMsg),
 });
 

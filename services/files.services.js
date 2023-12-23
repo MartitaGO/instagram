@@ -35,7 +35,7 @@ const savePhoto = async (img, ancho) => {
         // Definición de la carpeta de subida para las imágenes.
         const uploadsDir = path.join(
             process.cwd(),
-            '..',
+            '.',
             process.env.UPLOADS_DIR
         );
 
@@ -45,8 +45,9 @@ const savePhoto = async (img, ancho) => {
         } catch {
             await fs.mkdir(uploadsDir);
         }
+
         // Procesamiento de la imagen con Sharp y asignación de un nombre aleatorio.
-        const sharpImg = sharp(img.data);
+        const sharpImg = sharp(img.path);
         sharpImg.resize(ancho);
 
         const imgNameRandom = randomstring.generate(20) + '.jpg';

@@ -40,7 +40,7 @@ const main = async () => {
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 description TEXT NOT NULL,
                 userId INT UNSIGNED NOT NULL,
-                photo VARCHAR(100) NOT NULL,
+                imagenURL VARCHAR(255) NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
                 FOREIGN KEY (userId) REFERENCES users(id)
             )
