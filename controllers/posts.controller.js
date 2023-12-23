@@ -5,18 +5,30 @@ import postsServices from '../services/posts.services.js';
 // Importa un módulo de ayuda para manejar errores
 import errors from '../helpers/errors.helper.js';
 
-// Función para insertar un nuevo post
+export const insertNewPost = async (description, photo, userId) => {
+const post = {
+    description,
+    photo: photo.filename,
+    userId,
+    createdAt: new Date(),
+};
+
+const response = await postsServices.insertNewPost(post);
+};
+
+// ANTIGUA FUNCION // 
+/* Función para insertar un nuevo post
 export const insertNewPost = async (description, photo, userId) => {
     // Llama al servicio para insertar un nuevo post con los parámetros proporcionados
     const response = await postsServices.insertNewPost(
-        photo,
         description,
+        photo,
         userId
     );
 
     // Retorna la respuesta del servicio
     return response;
-};
+};*/
 
 // Función para obtener un post por su ID
 export const getPostsById = async (postsId) => {
