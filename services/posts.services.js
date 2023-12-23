@@ -9,7 +9,7 @@ const insertNewPost = async (photo, description, userId) => {
     const pool = await getPool();
 
     const [response] = await pool.query(
-        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)'
+        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)',
         [description, JSON.stringify(photo), userId]
     );
 
@@ -57,13 +57,13 @@ const insertPhoto = async (posts, photoName) => {
 // Función asincrónica para obtener una foto
 const getPhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', [
-        postsId,
-    ]);
+    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', 
+    [postsId]
+    );
 
     // Verificamos si la foto existe.
     if (response.length < 1) {
-        errors.entityNotFound('Photo');
+        errors.entityNotFound('photo');
     }
 
     return response[0];
@@ -72,13 +72,13 @@ const getPhotoById = async (postsId) => {
 // Función asincrónica para eliminar una foto
 const deletePhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('DELETE FROM posts WHERE id =?', [
-        postsId,
-    ]);
+    const [response] = await pool.query('DELETE FROM posts WHERE id =?', 
+    [postsId]
+    );
 
     // Verificamos si la eliminación fue exitosa.
     if (response.affectedRows < 1) {
-        errors.entityNotFound('Photo');
+        errors.entityNotFound('photo');
     }
 
     return response;

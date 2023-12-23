@@ -8,7 +8,7 @@ import joiErrorMessages from './joi.error.messages.js';
 const imgSchema = joi
     .object({
         // Validación para el campo "name" que debe ser una cadena de texto y es obligatorio.
-        name: joi.string().required().messages(joiErrorMessages),
+       // name: joi.string().required().messages(joiErrorMessages),
 
         // Validación para el campo "mimetype" que debe ser una cadena de texto y coincidir con los valores permitidos ('image/png', 'image/jpeg').
         mimetype: joi
@@ -21,7 +21,7 @@ const imgSchema = joi
         size: joi.number().max(5000000).required().messages(joiErrorMessages),
 
         // Validación para el campo "foto" que debe ser una cadena de texto y es opcional.
-        foto: joi.string().optional().messages(joiErrorMessages),
+        photo: joi.string().optional().messages(joiErrorMessages),
     })
     .unknown(true);
 

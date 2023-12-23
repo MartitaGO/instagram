@@ -15,7 +15,7 @@ const main = async (req, res, next) => {
         await validateSchema(newPostsSchema, req.files || {});
 
         // Extrae las propiedades necesarias del cuerpo de la solicitud.
-        const { description, photo } = req.body; 
+        const { description, photo } = req.body; // CAMBIO FILES POR BODY
 
         // Llama a la función insertNewPosts del controlador, proporcionando los datos de la nueva entrada y el ID del usuario actual.
         const response = await insertNewPost(
