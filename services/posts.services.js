@@ -8,8 +8,12 @@ import errors from '../helpers/errors.helper.js';
 const insertNewPost = async (photo, description, userId) => {
     const pool = await getPool();
 
+    if (!description) {
+        description = 'Sin descripción disponible'; // Puedes ajustar este valor predeterminado según tus necesidades
+    }
+
     const [response] = await pool.query(
-        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?,?)',
+        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?)',
         [description, JSON.stringify(photo), userId]
     );
 
@@ -27,9 +31,9 @@ const insertNewPost = async (photo, description, userId) => {
 // Función asincrónica para obtener todos los posts de la base de datos
 const getPostsById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT * FROM posts WHERE id =?', 
-    [postsId]
-    );
+    const [response] = await pool.query('SELECT * FROM posts WHERE id =?', [
+        postsId,
+    ]);
 
     // Verificamos si la entrada existe.
     if (response.length < 1) {
@@ -57,9 +61,9 @@ const insertPhoto = async (posts, photoName) => {
 // Función asincrónica para obtener una foto
 const getPhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', 
-    [postsId]
-    );
+    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', [
+        postsId,
+    ]);
 
     // Verificamos si la foto existe.
     if (response.length < 1) {
@@ -72,9 +76,9 @@ const getPhotoById = async (postsId) => {
 // Función asincrónica para eliminar una foto
 const deletePhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('DELETE FROM posts WHERE id =?', 
-    [postsId]
-    );
+    const [response] = await pool.query('DELETE FROM posts WHERE id =?', [
+        postsId,
+    ]);
 
     // Verificamos si la eliminación fue exitosa.
     if (response.affectedRows < 1) {
@@ -149,3 +153,4 @@ export default {
     insertLikePost,
     listPosts,
 };
+
