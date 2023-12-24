@@ -1,17 +1,16 @@
 {
 	"info": {
-		"_postman_id": "2e405ddf-d444-49ef-b113-778bd99aae6b",
+		"_postman_id": "b2536976-7638-46b9-994b-bac9dccecba0",
 		"name": "Instagram",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31390584",
-		"_collection_link": "https://proyecto2-insta.postman.co/workspace/My-Workspace~fd252d03-4c9e-46bd-8ea0-949fde3bf417/collection/31390584-2e405ddf-d444-49ef-b113-778bd99aae6b?action=share&source=collection_link&creator=31390584"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31981212"
 	},
 	"item": [
 		{
 			"name": "user",
 			"item": [
 				{
-					"name": "Registro",
+					"name": "Registro Copy",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -24,119 +23,133 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/users/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"register"
-							]
-						}
+						"url": "http://localhost:3000/users/register"
 					},
 					"response": []
 				},
 				{
-					"name": "Validation",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"username\": \"Daniela\",\n    \"password\": \"Nubes.12\",\n    \"email\": \"danielaespinosa449@gmail.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/validate/5R1sdyO4282pFZTFlP5MMKL8QjDhYb",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"validate",
-								"5R1sdyO4282pFZTFlP5MMKL8QjDhYb"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
+					"name": "Registro Copy 2",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"Nubes.8899\",\n    \"email\": \"zalo1490@gmail.com\"\n}",
+							"raw": "{\r\n    \"username\": \"Javier1\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla14901@hotmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/users/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"login"
-							]
-						}
+						"url": "http://localhost:3000/users/register"
 					},
 					"response": []
 				},
 				{
-					"name": "Users",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Validation Copy",
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": "http://localhost:3000/users/validate/mARwfwaV3gaXHKZWgPJG0s8qGkakhS"
+					},
+					"response": []
+				},
+				{
+					"name": "UsersLogin Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"disableCookies": true,
+						"tlsPreferServerCiphers": true,
+						"strictSSL": true,
+						"followOriginalHttpMethod": true,
+						"followAuthorizationHeader": true,
+						"removeRefererHeaderOnRedirect": true,
+						"insecureHTTPParser": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"raw": "{\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/users/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"register"
-							]
-						}
+						"url": "http://localhost:3000/users/login"
 					},
 					"response": []
 				},
 				{
-					"name": "UsersList",
+					"name": "UsersLogin Copy 2",
 					"protocolProfileBehavior": {
-						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"disableCookies": true,
+						"tlsPreferServerCiphers": true,
+						"strictSSL": true,
+						"followOriginalHttpMethod": true,
+						"followAuthorizationHeader": true,
+						"removeRefererHeaderOnRedirect": true,
+						"insecureHTTPParser": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla14901@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "DetalleMiUsuario Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1ODQzNSwiZXhwIjoxNzAzNDQ0ODM1fQ.GulspkQos4RVno8QK00Le9q46T5HfAmDYlqncZyf8sM",
+								"type": "default"
+							}
+						],
+						"url": "http://localhost:3000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "DetalleUsuario Copy",
+					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"accept": true,
 							"connection": true,
@@ -155,25 +168,37 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
-								"type": "text"
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "addAvatar Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzQwNDQwNiwiZXhwIjoxNzAzNDkwODA2fQ._WVrpUmKfXkBIHfejsFdyBJuxaMB4GYrxlYXCpySmbo",
+								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "http://localhost:3000/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users"
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/stefano/Pictures/20180426_114316.jpg"
+								}
 							]
-						}
+						},
+						"url": "http://localhost:3000/users/avatar"
 					},
 					"response": []
 				}
@@ -183,49 +208,13 @@
 			"name": "Posts",
 			"item": [
 				{
-					"name": "UsersAvatar",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1NzA0MywiZXhwIjoxNzAzMzY3ODQzfQ.KpNxuA8GpLhVEZVDJ3U2cf_hMLk6QBRJFFQoJZaRwus",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "avatar",
-									"type": "file",
-									"src": "postman-cloud:///1eea0f6e-ca04-4730-9422-c277fc4d5544"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/avatar",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"avatar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AddPosts",
+					"name": "AddPosts Copy",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1NzA0MywiZXhwIjoxNzAzMzY3ODQzfQ.KpNxuA8GpLhVEZVDJ3U2cf_hMLk6QBRJFFQoJZaRwus",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1ODQzNSwiZXhwIjoxNzAzNDQ0ODM1fQ.GulspkQos4RVno8QK00Le9q46T5HfAmDYlqncZyf8sM",
 								"type": "text"
 							}
 						],
@@ -234,120 +223,22 @@
 							"formdata": [
 								{
 									"key": "description",
-									"value": "Chica superpoderosa",
+									"value": "Prueba",
 									"type": "text"
 								},
 								{
 									"key": "photo",
-									"contentType": "",
 									"type": "file",
-									"src": "/C:/Users/User/Desktop/bellota.jpeg"
-								},
-								{
-									"key": "id",
-									"value": "2",
-									"type": "text"
+									"src": "/home/stefano/Pictures/IMG_20181108_195934.jpg"
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"posts"
-							]
-						}
+						"url": "http://localhost:3000/posts"
 					},
 					"response": []
 				},
 				{
-					"name": "Like",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE3MDMxNzMwODgsImV4cCI6MTcwMzE4Mzg4OH0.-D0oQ9OigrLecK9md2c-nluGjV7ORonksRkxovTKGpU",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Guachiman\",\r\n    \"password\": \"Nubes.124\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/posts/postsId/like?search=20230910_172145000_iOS.jpg",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"posts",
-								"postsId",
-								"like"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": "20230910_172145000_iOS.jpg"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListPostsSearch",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/posts?search=Italia",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"posts"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": "Italia"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListPosts",
+					"name": "ListPosts Copy",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -370,16 +261,42 @@
 								}
 							}
 						},
+						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "ListPostsSearch Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla1490@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/posts/listPosts",
+							"raw": "http://localhost:3000/posts?search=prueba",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"posts",
-								"listPosts"
+								"posts"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "prueba"
+								}
 							]
 						}
 					},
@@ -391,7 +308,7 @@
 			"name": "Extra",
 			"item": [
 				{
-					"name": "NotFound",
+					"name": "NotFound Copy",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -407,22 +324,12 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/prueba",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"prueba"
-							]
-						}
+						"url": "http://localhost:3000/prueba"
 					},
 					"response": []
 				},
 				{
-					"name": "StaticImg",
+					"name": "StaticImg Copy",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -438,17 +345,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/jfvbhslfdjbgshdfjbghjsdf.jpg",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jfvbhslfdjbgshdfjbghjsdf.jpg"
-							]
-						}
+						"url": "http://localhost:3000/uY1e0lXYHZhocEpL8Ux7.jpeg"
 					},
 					"response": []
 				}
