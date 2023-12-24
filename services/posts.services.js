@@ -31,9 +31,8 @@ const insertNewPost = async (photo, description, userId) => {
 // Función asincrónica para obtener todos los posts de la base de datos
 const getPostsById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT * FROM posts WHERE id =?', [
-        postsId,
-    ]);
+    const [response] = await pool.query('SELECT * FROM posts WHERE id =?', 
+    [postsId]);
 
     // Verificamos si la entrada existe.
     if (response.length < 1) {
@@ -61,9 +60,9 @@ const insertPhoto = async (posts, photoName) => {
 // Función asincrónica para obtener una foto
 const getPhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', [
-        postsId,
-    ]);
+    const [response] = await pool.query('SELECT * FROM posts WHERE id = ?', 
+    [postsId]
+    );
 
     // Verificamos si la foto existe.
     if (response.length < 1) {

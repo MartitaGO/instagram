@@ -18,24 +18,10 @@ export const insertNewPost = async (description, photo, userId) => {
     return response;
 };
 
-/*
-FUNCIÓN DE PRUEBA 
-export const insertNewPost = async (description, photo, userId) => {
-const post = {
-    description,
-    photo: photo.filename,
-    userId,
-    createdAt: new Date(),
-};
-
-const response = await postsServices.insertNewPost(post);
-};
-*/
-
 // Función para obtener un post por su ID
-export const getPostsById = async (postsId) => {
+export const getPostsById = async (postId) => {
     // Llama al servicio para obtener un post por su ID
-    const posts = await postsServices.getPostsById(postsId);
+    const posts = await postsServices.getPostsById(postId);
     // Retorna el post obtenido
     return posts;
 };
@@ -71,9 +57,8 @@ export const deletePhoto = async (postsId) => {
 
     // Elimina la foto del post usando el servicio de posts
     await postsServices.deletePhotoById(postsId);
-
-    await filesServices.updatePhoto(postsId, postsName); // AGREGO ESTA LINEA DE USERCONTROLLER
-
+    // Guarda la foto en post
+    await filesServices.updatePhoto(postsId, postsName); 
 };
 
 // Función para listar un post por su ID
@@ -96,17 +81,16 @@ export const listPost = async (postsId) => {
 };
 
 // Función para dar "like" o "dislike" a un post por su ID
-export const insertLikePost = async (value, postsId, userId) => {
-    // Obtiene el post por su ID
-    const post = await postsServices.getPostsById(postsId);
-
+export const insertLikePost = async (post, userId) => {
     // Comprueba si el usuario es el autor del post, si es así, lanza un error
     if (userId == post.userId) {
-        errors.unauthorizedUser('El usuario no puede dar like');
+        errors.unauthorizedUser(
+            'El usuario no puede dar like a su propio post'
+        );
     }
 
     // Inserta el "like" o "dislike" y obtiene el promedio de likes
-    const likesAvg = await postsServices.insertLikePost(value, post.id, userId);
+    const numLikes = await postsServices.insertLikePost(post.id, userId);
     // Retorna el promedio de likes
-    return likesAvg;
+    return numLikes;
 };
