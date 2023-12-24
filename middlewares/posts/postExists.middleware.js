@@ -10,8 +10,8 @@ const main = async (req, res, next) => {
         // Llama a la función getPostsById del controlador para obtener la entrada (post) correspondiente al ID proporcionado.
         const post = await getPostsById(postId);
 
-        // Almacena el resultado en el objeto de solicitud (req.posts) para que esté disponible para los middleware subsiguientes.
-        req.posts = post;
+        // Almacena el resultado en el objeto de solicitud (req.post) para que esté disponible para los middleware subsiguientes.
+        req.post = post;
 
         // En caso de error, pasa el control al siguiente middleware (o manejador de errores).
         next();

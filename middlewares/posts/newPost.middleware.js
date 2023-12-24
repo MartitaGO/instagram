@@ -5,12 +5,8 @@ import { insertNewPost } from '../../controllers/posts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Extrae las propiedades necesarias del cuerpo de la solicitud.
-<<<<<<< HEAD
-        const { description, photo } = req.body;
-=======
-        const { description } = req.body;
+        const { description } = req.body; 
         const photo = req.files.photo;
->>>>>>> 3dc8236430f59f657bf911bb50e123f3b25776dc
 
         // Llama a la función insertNewPosts del controlador, proporcionando los datos de la nueva entrada y el ID del usuario actual.
         const response = await insertNewPost(description, photo, req.user.id);

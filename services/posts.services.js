@@ -4,6 +4,7 @@ import getPool from '../db/getPool.js';
 // Importación del helper de errores.
 import errors from '../helpers/errors.helper.js';
 
+//importamos filesServices
 import filesServices from './files.services.js';
 
 // Función asincrónica para insertar una nueva entrada en la base de datos.
@@ -11,7 +12,7 @@ const insertNewPost = async (description, photo, userId) => {
     const pool = await getPool();
 
     if (!description) {
-        description = 'Sin descripción disponible'; // Puedes ajustar este valor predeterminado según tus necesidades
+        description = 'Sin descripción disponible'; 
     }
 
     // Guarda la img y obtiene su nombre
@@ -33,17 +34,11 @@ const insertNewPost = async (description, photo, userId) => {
     return response;
 };
 
-// Función asincrónica para obtener todos los posts de la base de datos
 const getPostsById = async (postId) => {
     const pool = await getPool();
-<<<<<<< HEAD
     const [response] = await pool.query('SELECT * FROM posts WHERE id =?', 
-    [postsId]);
-=======
-    const [response] = await pool.query('SELECT * FROM posts WHERE id =?', [
-        postId,
-    ]);
->>>>>>> 3dc8236430f59f657bf911bb50e123f3b25776dc
+    [postId]
+    );
 
     console.log(response, postId);
 
@@ -88,9 +83,9 @@ const getPhotoById = async (postsId) => {
 // Función asincrónica para eliminar una foto
 const deletePhotoById = async (postsId) => {
     const pool = await getPool();
-    const [response] = await pool.query('DELETE FROM posts WHERE id =?', [
-        postsId,
-    ]);
+    const [response] = await pool.query('DELETE FROM posts WHERE id =?', 
+    [postsId]
+    );
 
     // Verificamos si la eliminación fue exitosa.
     if (response.affectedRows < 1) {
@@ -118,19 +113,20 @@ const listPosts = async (search) => {
 
     return response[0];
 };
-// Función asincrónica para dar o quitar like
+
+// Función asincrónica para dar like
 const insertLikePost = async (postId, userId) => {
     const pool = await getPool();
 
     // Verificamos si el usuario ya ha dado like a la entrada.
     const [previousLikes] = await pool.query(
-        'SELECT * FROM likes WHERE userId = ? AND postsId = ?',
+        'SELECT * FROM likes WHERE userId = ? AND postId = ?',
         [userId, postId]
     );
 
     let response;
-
     if (previousLikes.length > 0) {
+
         // Eliminamos el like en la base de datos.
         [response] = await pool.query(
             'DELETE FROM likes WHERE postId=? AND userId=?',
@@ -146,7 +142,7 @@ const insertLikePost = async (postId, userId) => {
 
     // Verificamos si la inserción fue exitosa.
     if (response.affectedRows !== 1) {
-        errors.conflictError('Error al insertar el like', 'LIKE_INSERT_ERROR');
+        errors.conflictError('Error en like', 'LIKE_INSERT_ERROR');
     }
 
     // Calculamos el promedio de likes para la entrada.

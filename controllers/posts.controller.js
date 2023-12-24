@@ -57,13 +57,8 @@ export const deletePhoto = async (postsId) => {
 
     // Elimina la foto del post usando el servicio de posts
     await postsServices.deletePhotoById(postsId);
-<<<<<<< HEAD
-    // Guarda la foto en post
-    await filesServices.updatePhoto(postsId, postsName); 
-=======
 
-    await filesServices.updatePhoto(postsId, postsName);
->>>>>>> 3dc8236430f59f657bf911bb50e123f3b25776dc
+    await filesServices.updatePhoto(postsId, postsName); // AGREGO ESTA LINEA DE USERCONTROLLER
 };
 
 // Función para listar un post por su ID
@@ -86,14 +81,7 @@ export const listPost = async (postsId) => {
 };
 
 // Función para dar "like" o "dislike" a un post por su ID
-<<<<<<< HEAD
 export const insertLikePost = async (post, userId) => {
-=======
-export const insertLikePost = async (postsId, userId) => {
-    // Obtiene el post por su ID
-    const post = await postsServices.getPostsById(postsId);
-
->>>>>>> 3dc8236430f59f657bf911bb50e123f3b25776dc
     // Comprueba si el usuario es el autor del post, si es así, lanza un error
     if (userId == post.userId) {
         errors.unauthorizedUser(

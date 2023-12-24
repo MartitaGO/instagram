@@ -43,6 +43,7 @@ const savePhoto = async (img, ancho) => {
 
         // Procesamiento de la imagen con Sharp y asignación de un nombre aleatorio.
         const sharpImg = sharp(img.data);
+
         sharpImg.resize(ancho);
 
         const imgNameRandom = randomstring.generate(20) + '.jpeg';

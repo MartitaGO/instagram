@@ -4,6 +4,7 @@ import joiMsg from '../joi.error.messages.js';
 
 // Esquema de validación para la creación de una nueva publicación.
 const newPostSchema = joi.object({
+
     // Campo "photo" que debe ser un objeto con dos propiedades: "data" y "contentType"
     photo: joi
         .object({

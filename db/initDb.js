@@ -58,7 +58,7 @@ const main = async () => {
         )
     `);
 
-    console.log('¡Tablas creadas!');
+        console.log('¡Tablas creadas!');
     } catch (err) {
         console.error(err); // Muestra errores en la consola si ocurren durante la ejecución
     } finally {
