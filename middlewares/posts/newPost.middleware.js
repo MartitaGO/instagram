@@ -1,21 +1,16 @@
-// Importa la función validateSchema desde el archivo validationSchema.helper.js en la carpeta helpers/.
-import validateSchema from '../../helpers/validationSchema.helper.js';
-
-// Importa el esquema de validación newPostsSchema desde el archivo newPost.schema.js en la carpeta schemas/entries/.
-import newPostsSchema from '../../schemas/entries/newPost.schema.js';
-
 // Importa la función insertNewPosts desde el archivo posts.controller.js en la carpeta controllers/.
 import { insertNewPost } from '../../controllers/posts.controller.js';
 
 // Función principal (middleware) que maneja la lógica para insertar una nueva entrada (post).
 const main = async (req, res, next) => {
     try {
-        // Valida la estructura del cuerpo de la solicitud (req.body) según el esquema newPostsSchema.
-        // await validateSchema(newPostsSchema, req.body);
-        await validateSchema(newPostsSchema, req.files || {});
-
         // Extrae las propiedades necesarias del cuerpo de la solicitud.
+<<<<<<< HEAD
         const { description, photo } = req.body;
+=======
+        const { description } = req.body;
+        const photo = req.files.photo;
+>>>>>>> 3dc8236430f59f657bf911bb50e123f3b25776dc
 
         // Llama a la función insertNewPosts del controlador, proporcionando los datos de la nueva entrada y el ID del usuario actual.
         const response = await insertNewPost(description, photo, req.user.id);
@@ -27,11 +22,6 @@ const main = async (req, res, next) => {
             data: {
                 entry: {
                     id: response.insertId,
-
-                    description,
-                    photo,
-                    userId: req.user.id,
-                    createdAt: new Date(),
                 },
             },
         });

@@ -41,7 +41,7 @@ router.delete(
 );
 
 // Ruta para dar "like" a una publicación.
-router.post('/posts/:postsId/like', authUser, userExists, postExists, likePost);
+router.post('/posts/:postId/like', authUser, userExists, postExists, likePost);
 
 // Ruta para obtener el listado de fotos de una publicación.
 router.get(

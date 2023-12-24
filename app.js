@@ -5,7 +5,7 @@ dotenv.config();
 // Importación de módulos y configuración de Express
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import cors from 'cors'; 
+import cors from 'cors';
 import routes from './routes/index.routes.js';
 import errorController from './controllers/errors.controller.js';
 
@@ -18,7 +18,7 @@ app.use(fileUpload()); // Middleware para el manejo de archivos en las solicitud
 
 // Middleware para mostrar por consola el método y la ruta de cada solicitud
 app.use((req, res, next) => {
-    console.log(`${req.method} ${res.url}`);
+    console.log(`${req.method} ${req.url}`);
 
     // Pasamos el control al siguiente Middleware
     next();
