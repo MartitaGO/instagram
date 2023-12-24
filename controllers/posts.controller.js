@@ -72,8 +72,7 @@ export const deletePhoto = async (postsId) => {
     // Elimina la foto del post usando el servicio de posts
     await postsServices.deletePhotoById(postsId);
 
-    await filesServices.updatePhoto(postsId, postsName); // AGREGO ESTA LINEA DE USERCONTROLLER
-
+    await filesServices.updatePhoto(postsId, postsName);
 };
 
 // Función para listar un post por su ID
@@ -96,7 +95,7 @@ export const listPost = async (postsId) => {
 };
 
 // Función para dar "like" o "dislike" a un post por su ID
-export const insertLikePost = async (value, postsId, userId) => {
+export const insertLikePost = async (postsId, userId) => {
     // Obtiene el post por su ID
     const post = await postsServices.getPostsById(postsId);
 
@@ -106,7 +105,7 @@ export const insertLikePost = async (value, postsId, userId) => {
     }
 
     // Inserta el "like" o "dislike" y obtiene el promedio de likes
-    const likesAvg = await postsServices.insertLikePost(value, post.id, userId);
+    const numLikes = await postsServices.insertLikePost(post.id, userId);
     // Retorna el promedio de likes
-    return likesAvg;
+    return numLikes;
 };

@@ -5,13 +5,13 @@ import { getPostsById } from '../../controllers/posts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Intenta obtener el ID de la entrada (post) desde el cuerpo de la solicitud (req.posts.id) o los parámetros de la ruta (req.params.postsId).
-        const postsId = req.posts?.id || req.params.postsId;
+        const postId = req.posts?.id || req.params.postId;
 
         // Llama a la función getPostsById del controlador para obtener la entrada (post) correspondiente al ID proporcionado.
-        const posts = await getPostsById(postsId);
+        const post = await getPostsById(postId);
 
         // Almacena el resultado en el objeto de solicitud (req.posts) para que esté disponible para los middleware subsiguientes.
-        req.posts = posts;
+        req.posts = post;
 
         // En caso de error, pasa el control al siguiente middleware (o manejador de errores).
         next();

@@ -4,17 +4,22 @@ import getPool from '../db/getPool.js';
 // Importación del helper de errores.
 import errors from '../helpers/errors.helper.js';
 
+import filesServices from './files.services.js';
+
 // Función asincrónica para insertar una nueva entrada en la base de datos.
-const insertNewPost = async (photo, description, userId) => {
+const insertNewPost = async (description, photo, userId) => {
     const pool = await getPool();
 
     if (!description) {
         description = 'Sin descripción disponible'; // Puedes ajustar este valor predeterminado según tus necesidades
     }
 
+    // Guarda la img y obtiene su nombre
+    const newImgName = await filesServices.savePhoto(photo, 200);
+
     const [response] = await pool.query(
-        'INSERT INTO posts (description, photo, userId) VALUES (?,?,?)',
-        [description, JSON.stringify(photo), userId]
+        'INSERT INTO posts (description, imagenURL, userId) VALUES (?,?,?)',
+        [description, newImgName, userId]
     );
 
     // Verificamos si la inserción fue exitosa.
@@ -29,11 +34,13 @@ const insertNewPost = async (photo, description, userId) => {
 };
 
 // Función asincrónica para obtener todos los posts de la base de datos
-const getPostsById = async (postsId) => {
+const getPostsById = async (postId) => {
     const pool = await getPool();
     const [response] = await pool.query('SELECT * FROM posts WHERE id =?', [
-        postsId,
+        postId,
     ]);
+
+    console.log(response, postId);
 
     // Verificamos si la entrada existe.
     if (response.length < 1) {
@@ -91,38 +98,47 @@ const deletePhotoById = async (postsId) => {
 // Función asincrónica para obtener las publicaciones
 const listPosts = async (search) => {
     const pool = await getPool();
-    const [response] = await pool.query(
-        'SELECT * FROM posts WHERE description LIKE ?',
-        [`%${search}%`]
-    );
-    // Verificamos si hay errores al buscar las entradas.
-    if (response.length > 0) {
-        errors.conflictError('Error al buscar el posts');
+    let response;
+    if (search) {
+        response = await pool.query(
+            'SELECT * FROM posts WHERE description LIKE ? ORDER BY createdAt DESC',
+            [`%${search}%`]
+        );
+    } else {
+        response = await pool.query(
+            'SELECT * FROM posts ORDER BY createdAt DESC',
+            [`%${search}%`]
+        );
     }
 
-    return response;
+    return response[0];
 };
-// Función asincrónica para dar like
-const insertLikePost = async (value, postsId, userId) => {
+// Función asincrónica para dar o quitar like
+const insertLikePost = async (postId, userId) => {
     const pool = await getPool();
 
     // Verificamos si el usuario ya ha dado like a la entrada.
     const [previousLikes] = await pool.query(
         'SELECT * FROM likes WHERE userId = ? AND postsId = ?',
-        [userId, postsId]
+        [userId, postId]
     );
 
+    let response;
+
     if (previousLikes.length > 0) {
-        errors.unauthorizedUser(
-            'Este usuario ya votó anteriormente esta publicación.'
+        // Eliminamos el like en la base de datos.
+        [response] = await pool.query(
+            'DELETE FROM likes WHERE postId=? AND userId=?',
+            [postId, userId]
+        );
+    } else {
+        // Insertamos el like en la base de datos.
+        [response] = await pool.query(
+            'INSERT INTO likes (postId, userId) VALUES (?,?)',
+            [postId, userId]
         );
     }
 
-    // Insertamos el like en la base de datos.
-    const [response] = await pool.query(
-        'INSERT INTO likes (postsId, userId, value) VALUES (?,?,?)',
-        [postsId, userId, value]
-    );
     // Verificamos si la inserción fue exitosa.
     if (response.affectedRows !== 1) {
         errors.conflictError('Error al insertar el like', 'LIKE_INSERT_ERROR');
@@ -130,16 +146,11 @@ const insertLikePost = async (value, postsId, userId) => {
 
     // Calculamos el promedio de likes para la entrada.
     const [like] = await pool.query(
-        'SELECT AVG(value) as voteAvg FROM likes WHERE postsId = ?',
-        [postsId]
+        'SELECT count(*) as numLikes FROM likes WHERE postId = ?',
+        [postId]
     );
 
-    // Verificamos si se obtuvo el promedio de likes correctamente.
-    if (like.length < 1) {
-        errors.entityNotFound('likes');
-    }
-
-    return like[0].likeAvg;
+    return like[0].numLikes;
 };
 
 // Exportación de las funciones como un objeto para su uso en otras partes del código.
@@ -152,4 +163,3 @@ export default {
     insertLikePost,
     listPosts,
 };
-

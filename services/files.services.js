@@ -10,7 +10,6 @@ const deletePhoto = async (imgName) => {
         // Construcción de la ruta completa de la imagen.
         const imgPath = path.join(
             process.cwd(),
-            '..',
             process.env.UPLOADS_DIR,
             imgName
         );
@@ -33,11 +32,7 @@ const deletePhoto = async (imgName) => {
 const savePhoto = async (img, ancho) => {
     try {
         // Definición de la carpeta de subida para las imágenes.
-        const uploadsDir = path.join(
-            process.cwd(),
-            '.',
-            process.env.UPLOADS_DIR
-        );
+        const uploadsDir = path.join(process.cwd(), process.env.UPLOADS_DIR);
 
         // Intentamos acceder a la carpeta, y si no existe, la creamos.
         try {
@@ -47,7 +42,7 @@ const savePhoto = async (img, ancho) => {
         }
 
         // Procesamiento de la imagen con Sharp y asignación de un nombre aleatorio.
-        const sharpImg = sharp(img.path);
+        const sharpImg = sharp(img.data);
         sharpImg.resize(ancho);
 
         const imgNameRandom = randomstring.generate(20) + '.jpeg';
@@ -70,7 +65,6 @@ const listPosts = async (imgName) => {
         // Construcción de la ruta completa de la imagen.
         const imgPath = path.join(
             process.cwd(),
-            '..',
             process.env.UPLOADS_DIR,
             imgName
         );
