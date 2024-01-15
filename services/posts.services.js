@@ -96,20 +96,20 @@ const deletePhotoById = async (postsId) => {
 };
 
 // Función asincrónica para obtener las publicaciones
-const listPosts = async (search) => {
+const listPosts = async (search, userId) => {
     const pool = await getPool();
+    let idUser = parseInt(userId);
     let response;
+    let query = "SELECT * FROM posts"
+    const ps = []
     if (search) {
-        response = await pool.query(
-            'SELECT * FROM posts WHERE description LIKE ? ORDER BY createdAt DESC',
-            [`%${search}%`]
-        );
-    } else {
-        response = await pool.query(
-            'SELECT * FROM posts ORDER BY createdAt DESC',
-            [`%${search}%`]
-        );
+        query += ` WHERE description LIKE ? ${isNaN(idUser)? "": `AND userId =${idUser}`}`
+        ps.push(`%${search}%`);
+    }else if(!isNaN(idUser)){
+        query += ` WHERE userId =${idUser}`
     }
+    query += " ORDER BY createdAt DESC"
+    response = await pool.query(query,ps);
 
     return response[0];
 };

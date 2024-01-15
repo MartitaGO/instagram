@@ -28,24 +28,6 @@
 					"response": []
 				},
 				{
-					"name": "Registro Copy 2",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Javier1\",\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla14901@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:3000/users/register"
-					},
-					"response": []
-				},
-				{
 					"name": "Validation Copy",
 					"request": {
 						"method": "GET",
@@ -94,46 +76,7 @@
 					"response": []
 				},
 				{
-					"name": "UsersLogin Copy 2",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"connection": true,
-							"accept-encoding": true
-						},
-						"disableCookies": true,
-						"tlsPreferServerCiphers": true,
-						"strictSSL": true,
-						"followOriginalHttpMethod": true,
-						"followAuthorizationHeader": true,
-						"removeRefererHeaderOnRedirect": true,
-						"insecureHTTPParser": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"Lasolas123.\",\r\n    \"email\": \"gonzalo.jbonilla14901@hotmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:3000/users/login"
-					},
-					"response": []
-				},
-				{
-					"name": "DetalleMiUsuario Copy",
+					"name": "DetalleMiUsuario",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -148,37 +91,7 @@
 					"response": []
 				},
 				{
-					"name": "DetalleUsuario Copy",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"connection": true,
-							"accept-encoding": true
-						},
-						"disableCookies": true,
-						"tlsPreferServerCiphers": true,
-						"strictSSL": true,
-						"followOriginalHttpMethod": true,
-						"followAuthorizationHeader": true,
-						"removeRefererHeaderOnRedirect": true,
-						"insecureHTTPParser": false
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": "http://localhost:3000/users/1"
-					},
-					"response": []
-				},
-				{
-					"name": "addAvatar Copy",
+					"name": "addAvatar",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -208,7 +121,7 @@
 			"name": "Posts",
 			"item": [
 				{
-					"name": "AddPosts Copy",
+					"name": "AddPosts",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -238,7 +151,56 @@
 					"response": []
 				},
 				{
-					"name": "ListPosts Copy",
+					"name": "AddPhoto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1ODQzNSwiZXhwIjoxNzAzNDQ0ODM1fQ.GulspkQos4RVno8QK00Le9q46T5HfAmDYlqncZyf8sM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "Prueba",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/stefano/Pictures/IMG_20181108_195934.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePosts",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwNDk3ODM5MCwiZXhwIjoxNzA0OTg5MTkwfQ.xFNUlLdgSox19MN9UiispohOmV308gm34RG8v9poz9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": "http://localhost:3000/posts/4/photos/4"
+					},
+					"response": []
+				},
+				{
+					"name": "ListPosts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -266,7 +228,35 @@
 					"response": []
 				},
 				{
-					"name": "ListPostsSearch Copy",
+					"name": "ListPostsUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "ListPostsSearch",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -301,6 +291,21 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzQwNzc5NiwiZXhwIjoxNzAzNDk0MTk2fQ.8MvHVXIxSTAiFQb5-Znp4cf4Pf8rBVoUuN1EbFcTyFU",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/posts/4/like"
+					},
+					"response": []
 				}
 			]
 		},
@@ -308,7 +313,7 @@
 			"name": "Extra",
 			"item": [
 				{
-					"name": "NotFound Copy",
+					"name": "NotFound",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -329,7 +334,7 @@
 					"response": []
 				},
 				{
-					"name": "StaticImg Copy",
+					"name": "StaticImg",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},

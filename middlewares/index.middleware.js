@@ -52,6 +52,8 @@ import listPosts from './posts/listPosts.middleware.js';
 // Middleware para dar "like" a una publicación.
 import likePost from './posts/likePost.middleware.js';
 
+import printMethodUrl from './security/printMethodUrl.middleware.js';
+
 // Exportación de todos los middlewares.
 export {
     newUser,
@@ -72,4 +74,5 @@ export {
     deletePhoto,
     listPosts,
     likePost,
+    printMethodUrl
 };

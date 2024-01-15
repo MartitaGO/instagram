@@ -8,7 +8,7 @@ import {
     newPost,
     postExists,
     canEdit,
-    addPhoto,
+    addPhoto, 
     deletePhoto,
     likePost,
     listPosts,
@@ -20,6 +20,7 @@ const router = express.Router();
 //Ruta para nueva publicacion
 router.post('/posts', authUser, userExists, newPost);
 
+
 // Ruta para agregar una foto a una publicación existente.
 router.post(
     '/posts/:entryId/photos',
@@ -30,9 +31,11 @@ router.post(
     addPhoto
 );
 
+
 // Ruta para eliminar una foto de una publicación.
-router.delete(
-    '/posts/:entryId/photos/:photoId',
+router.delete( 
+    '/posts/:postsId/:userId',
+    // '/posts/:entryId/photos/:photoId', original 
     authUser,
     userExists,
     postExists,
@@ -43,13 +46,13 @@ router.delete(
 // Ruta para dar "like" a una publicación.
 router.post('/posts/:postId/like', authUser, userExists, postExists, likePost);
 
-// Ruta para obtener el listado de fotos de una publicación.
+// Ruta para obtener el listado de posts de un usuario
 router.get(
-    '/posts/:postId/photos',
+    '/posts/:userId', 
     authUser,
     userExists,
     postExists,
-    listPosts
+    listPosts 
 );
 
 // Ruta para obtener el listado general de publicaciones.

@@ -5,7 +5,7 @@ import { listPosts } from '../../controllers/listPosts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Llama a la función listPosts para obtener un listado de fotos basado en el parámetro de búsqueda proporcionado en req.query.search.
-        const photos = await listPosts(req.query.search);
+        const photos = await listPosts(req.query.search, req.query.user);
 
         console.log(photos);
 

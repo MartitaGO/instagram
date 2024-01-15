@@ -5,7 +5,7 @@ import { deletePhoto } from '../../controllers/posts.controller.js';
 const main = async (req, res, next) => {
     try {
         // Llama a la función deletePhoto para eliminar la foto correspondiente a la publicación indicada por req.params.postsId.
-        await deletePhoto(req.posts, req.params.postsId);
+       await deletePhoto(req.posts, req.params.postsId);
         // Envia una respuesta JSON indicando el éxito de la operación.
         res.send({
             status: 'ok',

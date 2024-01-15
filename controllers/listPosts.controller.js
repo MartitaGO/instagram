@@ -2,10 +2,10 @@
 import postsService from '../services/posts.services.js';
 
 // Función asincrónica para listar posts, acepta un parámetro de búsqueda
-export const listPosts = async (search) => {
+export const listPosts = async (search, userId) => {
     try {
         // Llama al método listPosts del servicio de posts, pasando el parámetro de búsqueda
-        const resultado = await postsService.listPosts(search);
+        const resultado = await postsService.listPosts(search, userId);;
 
         // Imprime en la consola el término de búsqueda para registro y seguimiento
         console.log('Search', search);

@@ -8,6 +8,7 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import routes from './routes/index.routes.js';
 import errorController from './controllers/errors.controller.js';
+import { printMethodUrl } from './middlewares/index.middleware.js';
 
 // Creación de la aplicación Express
 const app = express();
@@ -17,12 +18,7 @@ app.use(express.static(process.env.UPLOADS_DIR)); // Middleware para servir arch
 app.use(fileUpload()); // Middleware para el manejo de archivos en las solicitudes
 
 // Middleware para mostrar por consola el método y la ruta de cada solicitud
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-
-    // Pasamos el control al siguiente Middleware
-    next();
-});
+app.use(printMethodUrl);
 
 // Configuración de las rutas principales de la aplicación
 app.use(routes);
