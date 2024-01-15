@@ -4,7 +4,7 @@ const errorMsg = {
     'string.base': 'El valor de "{#key}" debe ser una cadena',
     'string.empty': 'El campo "{#key}" no debe estar vacío',
     'number.base': 'El valor de "{#key}" debe ser un número',
-    'number.max': 'El archivo no debe exceder los 5 MB',
+    'number.max': 'El archivo no debe exceder los 50 MB',
     'object.base': 'El valor de "{#key}" debe ser un objeto',
     'any.only': 'Solo se permiten fotos jpeg o png',
     'string.email':

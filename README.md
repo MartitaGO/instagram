@@ -68,3 +68,7 @@ Se han implementado middlewares para validar la autenticación, la existencia de
 
 ## Notas Adicionales
 Este proyecto utiliza tecnologías como Node.js, Express, MySQL como base de datos, y diversas librerías para funciones específicas. Asegúrate de tener configurado un entorno de desarrollo adecuado antes de iniciar la aplicación.
+
+
+## CORREGIR
+-que nos aparezcan los likes en la búsqueda de posts 

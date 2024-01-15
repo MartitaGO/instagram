@@ -4,31 +4,46 @@ import fs from 'fs/promises';
 import sharp from 'sharp';
 import randomstring from 'randomstring';
 
-// Función asincrónica para eliminar una foto
-const deletePhoto = async (imgName) => {
-    try {
-        // Construcción de la ruta completa de la imagen.
-        const imgPath = path.join(
-            process.cwd(),
-            process.env.UPLOADS_DIR,
-            imgName
-        );
+// Importación de la función que obtiene la conexión de la base de datos.
+import getPool from '../db/getPool.js';
 
-        // Intentamos acceder a la imagen, y si no se puede, asumimos que no existe y salimos.
-        try {
-            await fs.access(imgPath);
-        } catch {
-            return;
+// Importación del helper de errores.
+import errors from '../helpers/errors.helper.js';
+
+// Función para eliminar un post por su nombre
+// Función asincrónica para eliminar un post por su ID.
+const deletePostsById = async (postId) => {
+    try {
+        const pool = await getPool();
+        
+        // Verificar si el post existe antes de intentar eliminarlo.
+        const postExistsQuery = 'SELECT * FROM posts WHERE id = ?';
+        const [postExists] = await pool.query(postExistsQuery, [postId]);
+
+        if (postExists.length === 0) {
+            // El post no existe, puedes manejarlo de la manera que desees.
+            console.log(`Post con ID ${postId} no encontrado.`);
+            return; // O puedes lanzar un error si prefieres.
         }
-        // Eliminación efectiva de la imagen.
-        await fs.unlink(imgPath);
+
+        // Si el post existe, proceder con la eliminación.
+        const deleteQuery = 'DELETE FROM posts WHERE id = ?';
+        const [response] = await pool.query(deleteQuery, [postId]);
+
+        // Verificamos si la eliminación fue exitosa.
+        if (response.affectedRows < 1) {
+            errors.entityNotFound('posts');
+        }
+
+        return response;
     } catch (err) {
         console.error(err);
-        // Se maneja el error con un mensaje de consola y se podría usar un helper de manejo de errores de archivos.
+        throw err;
     }
 };
 
-// Función asincrónica para subir una foto
+
+// Función asincrónica para subir una foto.
 const savePhoto = async (img, ancho) => {
     try {
         // Definición de la carpeta de subida para las imágenes.
@@ -60,7 +75,7 @@ const savePhoto = async (img, ancho) => {
     }
 };
 
-// Función asincrónica para obtener todos los posts
+// Función asincrónica para obtener todos los posts.
 const listPosts = async (imgName) => {
     try {
         // Construcción de la ruta completa de la imagen.
@@ -74,7 +89,7 @@ const listPosts = async (imgName) => {
         try {
             await fs.access(imgPath);
         } catch {
-            return null; // La imagen no existe
+            return null; 
         }
 
         // Devolvemos la ruta completa de la imagen.
@@ -85,9 +100,10 @@ const listPosts = async (imgName) => {
     }
 };
 
+
 // Exportación de las funciones como un objeto para su uso en otras partes del código.
 export default {
-    deletePhoto,
+    deletePostsById,
     savePhoto,
     listPosts,
 };

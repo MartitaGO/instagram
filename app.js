@@ -1,3 +1,4 @@
+
 // Configuración de variables de entorno
 import dotenv from 'dotenv';
 dotenv.config();
@@ -8,7 +9,7 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import routes from './routes/index.routes.js';
 import errorController from './controllers/errors.controller.js';
-import { printMethodUrl } from './middlewares/index.middleware.js';
+import { errorUrl, printMethodUrl } from './middlewares/index.middleware.js';
 
 // Creación de la aplicación Express
 const app = express();
@@ -24,15 +25,21 @@ app.use(printMethodUrl);
 app.use(routes);
 
 // Middleware para manejar solicitudes a rutas no encontradas
-app.use((req, res) => {
-    res.status(404).send({
-        status: 'error',
-        message: 'Recurso no encontrado',
-    });
-});
+app.use(errorUrl);
 
 // Middleware para manejar errores generales de la aplicación
 app.use(errorController);
+
+app.delete('/posts/:postId', async (req, res) => {
+    const postId = req.params.postId;
+
+    try {
+        const result = await deletePosts(postId);
+        res.json({ message: 'Post eliminado correctamente', result });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar el post', message: error.message });
+    }
+});
 
 // Inicio del servidor en el puerto especificado en las variables de entorno
 app.listen(process.env.PORT, () => {

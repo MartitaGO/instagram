@@ -9,7 +9,7 @@ import {
     postExists,
     canEdit,
     addPhoto, 
-    deletePhoto,
+    deletePosts,
     likePost,
     listPosts,
 } from '../middlewares/index.middleware.js';
@@ -31,16 +31,15 @@ router.post(
     addPhoto
 );
 
-
-// Ruta para eliminar una foto de una publicación.
+// '/posts/:entryId/photos/:photoId', original
+// Ruta para eliminar un posts.
 router.delete( 
-    '/posts/:postsId/:userId',
-    // '/posts/:entryId/photos/:photoId', original 
+    '/posts/:postId', 
     authUser,
     userExists,
     postExists,
     canEdit,
-    deletePhoto
+    deletePosts
 );
 
 // Ruta para dar "like" a una publicación.

@@ -12,7 +12,7 @@ const main = async (req, res, next) => {
         // Envia una respuesta JSON indicando el éxito de la operación y proporcionando el listado de fotos.
         res.send({
             status: 'ok',
-            message: 'Aquí tienes el listado de fotos',
+            message: 'Aquí tienes el listado de posts',
             data: { photos },
         });
     } catch (err) {
