@@ -40,9 +40,6 @@ import postExists from './posts/postExists.middleware.js';
 // Middleware para verificar si un usuario puede editar una entrada.
 import canEdit from './security/canEdit.middleware.js';
 
-// Middleware para agregar una foto a una publicación.
-import addPhoto from './posts/addPhoto.middleware.js';
-
 // Middleware para eliminar una posts.
 import deletePosts from './posts/deletePosts.middleware.js';
 
@@ -52,12 +49,11 @@ import listPosts from './posts/listPosts.middleware.js';
 // Middleware para dar "like" a una publicación.
 import likePost from './posts/likePost.middleware.js';
 
-
-
-
 import printMethodUrl from './security/printMethodUrl.middleware.js';
 
 import errorUrl from './errors/errorUrl.middleware.js';
+
+import getPostsById  from './posts/getPostsById.middelware.js';
 
 // Exportación de todos los middlewares.
 export {
@@ -75,10 +71,11 @@ export {
     newPost,
     postExists,
     canEdit,
-    addPhoto,
     deletePosts,
     listPosts,
     likePost,
     printMethodUrl,
-    errorUrl
+    errorUrl,
+    getPostsById
+    
 };

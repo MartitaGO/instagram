@@ -8,42 +8,39 @@ import {
     newPost,
     postExists,
     canEdit,
-    addPhoto, 
     deletePosts,
     likePost,
     listPosts,
+    getPostsById
 } from '../middlewares/index.middleware.js';
+
 
 // Creación de un router de Express.
 const router = express.Router();
 
 //Ruta para nueva publicacion
-router.post('/posts', authUser, userExists, newPost);
-
-
-// Ruta para agregar una foto a una publicación existente.
-router.post(
-    '/posts/:entryId/photos',
-    authUser,
+router.post('/posts', 
+    authUser, 
     userExists,
-    postExists,
-    canEdit,
-    addPhoto
-);
+    newPost
+    );
 
-// '/posts/:entryId/photos/:photoId', original
 // Ruta para eliminar un posts.
-router.delete( 
-    '/posts/:postId', 
+router.delete('/posts/:postId', 
     authUser,
     userExists,
     postExists,
     canEdit,
     deletePosts
-);
+    );
 
 // Ruta para dar "like" a una publicación.
-router.post('/posts/:postId/like', authUser, userExists, postExists, likePost);
+router.post('/posts/:postId/like',
+    authUser,
+    userExists, 
+    postExists, 
+    likePost
+    );
 
 // Ruta para obtener el listado de posts de un usuario
 router.get(
@@ -52,10 +49,17 @@ router.get(
     userExists,
     postExists,
     listPosts 
-);
+    );
 
 // Ruta para obtener el listado general de publicaciones.
-router.get('/posts', listPosts);
+router.get('/posts', 
+    listPosts
+    );
 
+
+router.get('/posts/detail/:postId', 
+    postExists,
+    getPostsById
+    );
 // Exportación del router para su uso en otras partes de la aplicación.
 export default router;

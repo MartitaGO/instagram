@@ -10,12 +10,11 @@ import getPool from '../db/getPool.js';
 // Importación del helper de errores.
 import errors from '../helpers/errors.helper.js';
 
-// Función para eliminar un post por su nombre
 // Función asincrónica para eliminar un post por su ID.
-const deletePostsById = async (postId) => {
+const deletePosts = async (postId) => {
     try {
         const pool = await getPool();
-        
+
         // Verificar si el post existe antes de intentar eliminarlo.
         const postExistsQuery = 'SELECT * FROM posts WHERE id = ?';
         const [postExists] = await pool.query(postExistsQuery, [postId]);
@@ -23,7 +22,7 @@ const deletePostsById = async (postId) => {
         if (postExists.length === 0) {
             // El post no existe, puedes manejarlo de la manera que desees.
             console.log(`Post con ID ${postId} no encontrado.`);
-            return; // O puedes lanzar un error si prefieres.
+            return;
         }
 
         // Si el post existe, proceder con la eliminación.
@@ -42,6 +41,28 @@ const deletePostsById = async (postId) => {
     }
 };
 
+const deletePhoto = async (imgName) => {
+    try {
+        const imgPath = path.join(
+            process.cwd(),
+            '..',
+            process.env.UPLOADS_DIR,
+            imgName
+        );
+
+        //Intentamos acceder, si no se puede significa que no existe
+        try {
+            await fs.access(imgPath);
+        } catch {
+            return;
+        }
+        //Eliminación
+        await fs.unlink(imgPath);
+    } catch (err) {
+        console.error(err);
+        //error helper para manejo de error de archivos
+    }
+};
 
 // Función asincrónica para subir una foto.
 const savePhoto = async (img, ancho) => {
@@ -59,7 +80,7 @@ const savePhoto = async (img, ancho) => {
         // Procesamiento de la imagen con Sharp y asignación de un nombre aleatorio.
         const sharpImg = sharp(img.data);
 
-        sharpImg.resize(ancho);
+        //sharpImg.resize(ancho);
 
         const imgNameRandom = randomstring.generate(20) + '.jpeg';
         const imgPath = path.join(uploadsDir, imgNameRandom);
@@ -89,7 +110,7 @@ const listPosts = async (imgName) => {
         try {
             await fs.access(imgPath);
         } catch {
-            return null; 
+            return null;
         }
 
         // Devolvemos la ruta completa de la imagen.
@@ -100,10 +121,10 @@ const listPosts = async (imgName) => {
     }
 };
 
-
 // Exportación de las funciones como un objeto para su uso en otras partes del código.
 export default {
-    deletePostsById,
+    deletePosts,
+    deletePhoto,
     savePhoto,
     listPosts,
 };

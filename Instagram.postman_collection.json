@@ -10,7 +10,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "Registro Copy",
+					"name": "Register",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "Validation Copy",
+					"name": "Validation",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -37,7 +37,7 @@
 					"response": []
 				},
 				{
-					"name": "UsersLogin Copy",
+					"name": "Login",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"accept": true,
@@ -97,7 +97,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzQwNDQwNiwiZXhwIjoxNzAzNDkwODA2fQ._WVrpUmKfXkBIHfejsFdyBJuxaMB4GYrxlYXCpySmbo",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwNjI2Nzg1MywiZXhwIjoxNzA2Mjk2NjUzfQ.mYukkJpQeThDvslrH0iEePqHhHd1T0l8OY54OgeXqTM",
 								"type": "default"
 							}
 						],
@@ -107,7 +107,7 @@
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": "/home/stefano/Pictures/20180426_114316.jpg"
+									"src": "Playa.jpeg"
 								}
 							]
 						},
@@ -122,36 +122,6 @@
 			"item": [
 				{
 					"name": "AddPosts",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMzM1ODQzNSwiZXhwIjoxNzAzNDQ0ODM1fQ.GulspkQos4RVno8QK00Le9q46T5HfAmDYlqncZyf8sM",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "description",
-									"value": "Prueba",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": "/home/stefano/Pictures/IMG_20181108_195934.jpg"
-								}
-							]
-						},
-						"url": "http://localhost:3000/posts"
-					},
-					"response": []
-				},
-				{
-					"name": "AddPhoto",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -228,6 +198,34 @@
 					"response": []
 				},
 				{
+					"name": "getPostsByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				},
+				{
 					"name": "ListPostsUsers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -252,6 +250,53 @@
 							}
 						},
 						"url": "http://localhost:3000/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "ListPostsUsersDetalle",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwNTA1NzU3OCwiZXhwIjoxNzA1MDY4Mzc4fQ.Pkj0zREFAf3IVRaWVd-5SazbSccrtLr1d4wMfsG5Pj4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts?user=1&search=Navidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "1"
+								},
+								{
+									"key": "search",
+									"value": "Navidad"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -304,6 +349,21 @@
 							}
 						],
 						"url": "http://localhost:3000/posts/4/like"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/posts/5",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwNzIyNjM5NSwiZXhwIjoxNzA3MjU1MTk1fQ.SvfKCiHASvmlXwem7SmoeINgH4a5wskS9ChU3yW8vRQ",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/posts/5"
 					},
 					"response": []
 				}

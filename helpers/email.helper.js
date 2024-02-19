@@ -2,6 +2,8 @@
 import nodemailer from 'nodemailer';
 import errors from './errors.helper.js';
 
+const port = 3000;
+
 // Crea un objeto de transporte para enviar correos electrónicos
 const transport = nodemailer.createTransport({
     host: process.env.SMTP_HOST,        // Host del servidor SMTP
@@ -26,11 +28,22 @@ const sendMail = async (email, subject, body) => {
         // Envía el correo electrónico utilizando el objeto de transporte
         await transport.sendMail(mail);
 
+        // Aquí puedes agregar la lógica para validar el enlace
+        if (body.includes(`http://localhost:${port}`)) {
+
+            console.log('El enlace es válido.');
+            // Realiza las acciones correspondientes al validar el enlace
+        } else {
+            console.log('El enlace no es válido.');
+            // Realiza las acciones correspondientes al enlace no válido
+        }
+
     } catch (err) {
         console.error(err);
         // Maneja errores relacionados con el envío de correos electrónicos
         errors.sendEmailError('Error al enviar el correo electrónico a ' + email);
     }
 }
+
 // Exporta la función sendMail como predeterminada para que pueda ser utilizada en otros archivos
 export default sendMail;

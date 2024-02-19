@@ -98,8 +98,6 @@ const getUsers = async () => {
 // Función asincrónica para obtener un usuario por su ID
 const getUserById = async (userId) => {
   const pool = await getPool()
-
-  // Consulta para obtener el usuario por su ID.
   const [users] = await pool.query('SELECT * FROM users WHERE id = ?', [userId])
 
   // Verificamos si el usuario existe.

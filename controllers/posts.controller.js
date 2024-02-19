@@ -21,22 +21,9 @@ export const insertNewPost = async (description, photo, userId) => {
 // Función para obtener un post por su ID
 export const getPostsById = async (postId) => {
     // Llama al servicio para obtener un post por su ID
-    const posts = await postsServices.getPostsById(postId);
-    // Retorna el post obtenido
-    return posts;
-};
-
-// Función para insertar una foto en un post
-export const insertPhoto = async (posts) => {
-    // Guarda la foto usando el servicio de archivos y obtiene el nombre de la foto
-    const postsName = await filesServices.savePhoto(posts, 500);
-    // Inserta la foto usando el servicio de posts y obtiene el ID del post
-    const postsId = await postsServices.insertPhoto(posts, postsName);
-    // Retorna un objeto con el ID del post y el nombre de la foto
-    return {
-        id: postsId,
-        name: postsName,
-    };
+    const post = await postsServices.getPostsById(postId);
+    return post;
+   
 };
 
 // Función para eliminar un post por su ID
@@ -44,26 +31,8 @@ export const deletePosts = async (postsId, userId) => {
     console.log('ID del post a eliminar:', postsId);
 
     try {
-        // Obtiene el post por su ID
-        const post = await postsServices.getPostsById(postsId);
-
-        // Verifica si el post existe y si el usuario es el propietario
-        if (!post || String(post.userId) !== String(userId)) {
-            console.log('Post encontrado:', post);
-            errors.notAuthorizedError(
-                'Este post no pertenece al usuario actual o no existe',
-                'ENTRY_DELETE_ERROR'
-            );
-        }
-
-        // Elimina la foto usando el servicio de archivos
-        await filesServices.deletePosts(post.name);
-
         // Elimina el post usando el servicio de posts
-        await postsServices.deletePostsById(postsId);
-
-        // Actualiza la foto del post usando el servicio de archivos (ajusta esto según tus necesidades)
-        await filesServices.updatePhoto(postsId, post.name);
+        await postsServices.deletePosts(postsId);
 
         console.log('Post eliminado correctamente');
         return { message: 'Post eliminado correctamente' };
@@ -89,7 +58,7 @@ export const listPost = async (postsId) => {
     // Lista los posts usando el servicio de archivos
     await filesServices.listPosts(post.name);
     // Actualiza la visualización del post usando el servicio de posts
-    await postsServices.lookPostsById(postsId);
+    await postsServices.listPostsByI(postsId);
 };
 
 // Función para dar "like" o "dislike" a un post por su ID

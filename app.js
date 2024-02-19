@@ -30,18 +30,8 @@ app.use(errorUrl);
 // Middleware para manejar errores generales de la aplicación
 app.use(errorController);
 
-app.delete('/posts/:postId', async (req, res) => {
-    const postId = req.params.postId;
-
-    try {
-        const result = await deletePosts(postId);
-        res.json({ message: 'Post eliminado correctamente', result });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al eliminar el post', message: error.message });
-    }
-});
-
 // Inicio del servidor en el puerto especificado en las variables de entorno
 app.listen(process.env.PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${process.env.PORT}`);
 });
+

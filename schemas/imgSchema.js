@@ -18,7 +18,7 @@ const imgSchema = joi
             .messages(joiErrorMessages),
 
         // Validación para el campo "size" que debe ser un número y no exceder el límite de 5000000.
-        size: joi.number().max(500000000).required().messages(joiErrorMessages),
+        size: joi.number().max(5000000000).required().messages(joiErrorMessages),
 
         // Validación para el campo "foto" que debe ser una cadena de texto y es opcional.
         photo: joi.string().optional().messages(joiErrorMessages),
