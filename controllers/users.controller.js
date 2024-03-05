@@ -72,9 +72,8 @@ export const newUserRegister = async (body, registrationCode) => {
     const emailBody = `
         <h1>Bienvenido ${username}</h1>
         Gracias por registrarte en Instagram. Para activar tu cuenta, haz clic en el siguiente enlace:
-
         
-        <a href="http://localhost:127.0.0.1/users/validate/${registrationCode}">Activar mi cuenta</a>
+        <a href="http://localhost:${process.env.PORT}/users/validate/${registrationCode}">Activar mi cuenta</a>
      `;
     // Envía el email de activación
     await sendMail(email, 'Activa tu usuario', emailBody);

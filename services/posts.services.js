@@ -36,7 +36,7 @@ const insertNewPost = async (description, photo, userId) => {
 
 const getPostsById = async (postId) => {
     const pool = await getPool();
-    const [response] = await pool.query('SELECT p.*, u.username, (SELECT count(postId) FROM instagram.likes WHERE postId = p.Id) as likes FROM posts p LEFT JOIN instagram.users u ON u.id=p.userId WHERE p.id=?', [
+    const [response] = await pool.query('SELECT p.*, u.username, (SELECT count(postId) FROM likes WHERE postId = p.Id) as likes FROM posts p LEFT JOIN users u ON u.id=p.userId WHERE p.id=?', [
         postId,
     ]);
 
@@ -75,9 +75,9 @@ const listPosts = async (search, userId) => {
     const pool = await getPool();
     let idUser = parseInt(userId);
     let response;
-    let query = 'SELECT p.*, u.username, (SELECT count(postId) FROM instagram.likes WHERE postId = p.Id) as likes FROM posts p';
+    let query = 'SELECT p.*, u.username, (SELECT count(postId) FROM likes WHERE postId = p.Id) as likes FROM posts p';
     const ps = [];
-    query += ' LEFT JOIN instagram.users u ON u.id=p.userId';
+    query += ' LEFT JOIN users u ON u.id=p.userId';
     if (search) {
         query += ` WHERE description LIKE ? ${
             isNaN(idUser) ? '' : `AND userId =${idUser}`

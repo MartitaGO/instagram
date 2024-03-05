@@ -1,3 +1,6 @@
+# ClonInsta_Back
+Backend con Node.js
+
 # Proyecto Instagram API
 Este proyecto consiste en la creación de una API que replica algunas funcionalidades básicas de la red social de fotos Instagram. A continuación, se presenta una descripción detallada de las principales funcionalidades, entidades y puntos clave del proyecto.
 
@@ -63,8 +66,10 @@ Se han implementado middlewares para validar la autenticación, la existencia de
 1. Clona el repositorio mediante el comando git clone.
 2. Instala las dependencias utilizando el comando npm install.
 3. Renombra el archivo .env.example a .env y completa los campos necesarios.
-4. Ejecuta el servidor con el comando npm start.
-5. ¡Listo! La API estará disponible para su uso.
+4. Crear la carpeta Uploads.
+5. Ejecuta el servidor con el comando npm start.
+6. ¡Listo! La API estará disponible para su uso.
+
 
 ## Notas Adicionales
 Este proyecto utiliza tecnologías como Node.js, Express, MySQL como base de datos, y diversas librerías para funciones específicas. Asegúrate de tener configurado un entorno de desarrollo adecuado antes de iniciar la aplicación.
