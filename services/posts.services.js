@@ -40,8 +40,6 @@ const getPostsById = async (postId) => {
         postId,
     ]);
 
-    console.log(response, postId);
-
     // Verificamos si la entrada existe.
     if (response.length < 1) {
         errors.entityNotFound('Entrada');

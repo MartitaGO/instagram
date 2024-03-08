@@ -7,8 +7,6 @@ const main = async (req, res, next) => {
         // Llama a la función listPosts para obtener un listado de fotos basado en el parámetro de búsqueda proporcionado en req.query.search.
         const photos = await listPosts(req.query.search, req.query.user);
 
-        console.log(photos);
-
         // Envia una respuesta JSON indicando el éxito de la operación y proporcionando el listado de fotos.
         res.send({
             status: 'ok',

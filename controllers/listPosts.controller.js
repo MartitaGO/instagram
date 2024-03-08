@@ -6,10 +6,7 @@ export const listPosts = async (search, userId) => {
     try {
         // Llama al método listPosts del servicio de posts, pasando el parámetro de búsqueda
         const resultado = await postsService.listPosts(search, userId);;
-
-        // Imprime en la consola el término de búsqueda para registro y seguimiento
-        console.log('Search', search);
-
+        
         // Retorna el resultado obtenido
         return resultado;
     } catch (error) {

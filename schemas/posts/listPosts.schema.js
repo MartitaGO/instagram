@@ -8,7 +8,6 @@ const listPosts = async (texto) => {
         await listPostsSchema.Async(texto);
         // Si la validación es exitosa, imprime un mensaje indicando que los datos son válidos.
 
-        console.log('Datos válidos:', texto);
     } catch (error) {
         // Si hay un error en la validación, imprime un mensaje de error indicando que ocurrió un error de validación.
         console.error('Error de validación:', error);
